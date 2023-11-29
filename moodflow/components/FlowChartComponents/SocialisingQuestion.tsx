@@ -4,11 +4,12 @@ import { View, Text, Pressable } from 'react-native';
 
 import styles from './styles';
 
-const SocialisingQuestion = () => {
+const SocialisingQuestion = ({ formButtonHandler }: any) => {
   const [answer, setAnswer] = useState('');
 
   const onPress = (value: string) => {
     setAnswer(value);
+    formButtonHandler();
   };
   return (
     <View style={styles.container}>

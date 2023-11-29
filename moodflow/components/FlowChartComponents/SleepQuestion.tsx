@@ -9,6 +9,7 @@ const SleepQuestion = ({ formButtonHandler }: any) => {
 
   const onPress = (value: string) => {
     setAnswer(value);
+    formButtonHandler();
   };
 
   return (
