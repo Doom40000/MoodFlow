@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { View, Dimensions } from 'react-native';
-import Svg, { Image } from 'react-native-svg';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -10,6 +9,7 @@ import Animated, {
   withTiming,
   withDelay,
 } from 'react-native-reanimated';
+import Svg, { Image } from 'react-native-svg';
 
 import DayQuestion from '../../components/FlowChartComponents/DayQuestion';
 import DietQuestion from '../../components/FlowChartComponents/DietQuestion';
@@ -34,7 +34,7 @@ const logoSrc = require('../../assets/MoodFlowLogo.png');
 const FlowChart = () => {
   const { height, width } = Dimensions.get('window');
   const formOnePosition = useSharedValue(1);
-  const [question, setQuestion] = useState(1);
+  const [question, setQuestion] = useState(0);
 
   // Set up animation style for form components
   const formOneAnimatedStyle = useAnimatedStyle(() => {
@@ -47,13 +47,18 @@ const FlowChart = () => {
     };
   });
 
-  // Modularity since we're keeping the animation state but change the question (while it's invisible)
+  //! Crashes when question > flowChartQuestions.length
   const formButtonHandler = () => {
     formOnePosition.value = 0;
     setTimeout(() => {
-      setQuestion(2)
+      setQuestion(question + 1);
       formOnePosition.value = 1;
-    }, 1000)
+    }, 1000);
+  };
+
+  const renderQuestionComponent = () => {
+    const QuestionComponent = flowChartQuestions[question];
+    return <QuestionComponent formButtonHandler={formButtonHandler} />;
   };
 
   return (
@@ -70,12 +75,9 @@ const FlowChart = () => {
           />
         </Svg>
       </View>
-      {question == 1 && <Animated.View style={[{ flex: 2 }, formOneAnimatedStyle]}>
-        <ExerciseQuestion formButtonHandler={formButtonHandler} />
-      </Animated.View>}
-      {question == 2 && <Animated.View style={[{ flex: 2 }, formOneAnimatedStyle]}>
-        <SleepQuestion formButtonHandler={formButtonHandler} />
-      </Animated.View>}
+      <Animated.View style={[{ flex: 2 }, formOneAnimatedStyle]}>
+        {renderQuestionComponent()}
+      </Animated.View>
     </View>
   );
 };
