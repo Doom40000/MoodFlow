@@ -9,6 +9,7 @@ import React from 'react';
 
 import Settings from './screens/Settings/Settings';
 
+
 const Tab = createBottomTabNavigator();
 
 const CustomScreenOptions = {
@@ -22,7 +23,7 @@ const CustomScreenOptions = {
   },
   tabBarActiveTintColor: '#1EAED7',
   tabBarInactiveTintColor: 'grey',
-
+}
 
 export default function App() {
   return (
@@ -49,7 +50,7 @@ export default function App() {
           />
         </Tab.Navigator>
         <StatusBar style="auto" backgroundColor="#ffffff" />
-    </View>
+      </NavigationContainer>
   );
 }
 
