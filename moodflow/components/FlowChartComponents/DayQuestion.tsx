@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
-import { View, Text, Pressable, Touchable } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 
 import styles from './styles';
 
@@ -8,7 +9,6 @@ const DayQuestion = () => {
 
   const onPress = (value: string) => {
     setAnswer(value);
-    console.log(answer);
   };
 
   return (
