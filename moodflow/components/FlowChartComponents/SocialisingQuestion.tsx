@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
 
 import styles from './styles';
+import { QuestionProps } from '../../screens/FlowChart/FlowChart';
 
-const SocialisingQuestion = ({ formButtonHandler }: any) => {
+const SocialisingQuestion = ({ formButtonHandler }: QuestionProps) => {
   const [answer, setAnswer] = useState('');
 
   const onPress = (value: string) => {

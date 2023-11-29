@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { View, Dimensions } from 'react-native';
 import Animated, {
@@ -7,7 +5,6 @@ import Animated, {
   useAnimatedStyle,
   interpolate,
   withTiming,
-  withDelay,
 } from 'react-native-reanimated';
 import Svg, { Image } from 'react-native-svg';
 
@@ -29,6 +26,11 @@ const flowChartQuestions = [
   SocialisingQuestion,
 ];
 
+type FormButtonHandlerType = () => void;
+export interface QuestionProps {
+  formButtonHandler: FormButtonHandlerType;
+}
+
 const logoSrc = require('../../assets/MoodFlowLogo.png');
 
 const FlowChart = () => {
@@ -40,10 +42,8 @@ const FlowChart = () => {
   const formOneAnimatedStyle = useAnimatedStyle(() => {
     const interpolation = interpolate(formOnePosition.value, [0, 1], [250, 0]);
     return {
-      opacity: withTiming(formOnePosition.value, { duration: 1000 }),
-      transform: [
-        { translateY: withTiming(interpolation, { duration: 1000 }) },
-      ],
+      opacity: withTiming(formOnePosition.value, { duration: 800 }),
+      transform: [{ translateY: withTiming(interpolation, { duration: 800 }) }],
     };
   });
 
@@ -56,6 +56,7 @@ const FlowChart = () => {
     }, 1000);
   };
 
+  // Conditionally render questions of array
   const renderQuestionComponent = () => {
     const QuestionComponent = flowChartQuestions[question];
     return <QuestionComponent formButtonHandler={formButtonHandler} />;
