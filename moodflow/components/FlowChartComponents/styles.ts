@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   questionText: {
     color: 'white',
     fontSize: 30,
+    marginHorizontal: 5,
     marginBottom: 25,
   },
 });
