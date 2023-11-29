@@ -4,7 +4,8 @@ import { View, Text, Pressable } from 'react-native';
 
 import styles from './styles';
 
-const ExerciseQuestion = () => {
+//TODO: Get rid of any
+const ExerciseQuestion = ({ formButtonHandler }: any) => {
   const [answer, setAnswer] = useState('');
 
   const onPress = (value: string) => {
@@ -15,7 +16,10 @@ const ExerciseQuestion = () => {
       <Text style={styles.questionText}>
         Have you gotten any exercise today?
       </Text>
-      <Pressable style={styles.button} onPress={() => onPress('Yes')}>
+      <Pressable
+        style={styles.button}
+        onPress={() => onPress(formButtonHandler)}
+      >
         <Text style={styles.text}>Yes</Text>
       </Pressable>
       <Pressable style={styles.button} onPress={() => onPress('No')}>

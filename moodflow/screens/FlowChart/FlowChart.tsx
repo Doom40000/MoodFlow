@@ -1,7 +1,15 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Dimensions } from 'react-native';
 import Svg, { Image } from 'react-native-svg';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  interpolate,
+  withTiming,
+  withDelay,
+} from 'react-native-reanimated';
 
 import DayQuestion from '../../components/FlowChartComponents/DayQuestion';
 import DietQuestion from '../../components/FlowChartComponents/DietQuestion';
@@ -25,6 +33,28 @@ const logoSrc = require('../../assets/MoodFlowLogo.png');
 
 const FlowChart = () => {
   const { height, width } = Dimensions.get('window');
+  const formOnePosition = useSharedValue(1);
+  const [question, setQuestion] = useState(1);
+
+  // Set up animation style for form components
+  const formOneAnimatedStyle = useAnimatedStyle(() => {
+    const interpolation = interpolate(formOnePosition.value, [0, 1], [250, 0]);
+    return {
+      opacity: withTiming(formOnePosition.value, { duration: 1000 }),
+      transform: [
+        { translateY: withTiming(interpolation, { duration: 1000 }) },
+      ],
+    };
+  });
+
+  // Modularity since we're keeping the animation state but change the question (while it's invisible)
+  const formButtonHandler = () => {
+    formOnePosition.value = 0;
+    setTimeout(() => {
+      setQuestion(2)
+      formOnePosition.value = 1;
+    }, 1000)
+  };
 
   return (
     <View style={styles.container}>
@@ -40,9 +70,12 @@ const FlowChart = () => {
           />
         </Svg>
       </View>
-      <View style={{ flex: 2 }}>
-        <ExerciseQuestion />
-      </View>
+      {question == 1 && <Animated.View style={[{ flex: 2 }, formOneAnimatedStyle]}>
+        <ExerciseQuestion formButtonHandler={formButtonHandler} />
+      </Animated.View>}
+      {question == 2 && <Animated.View style={[{ flex: 2 }, formOneAnimatedStyle]}>
+        <SleepQuestion formButtonHandler={formButtonHandler} />
+      </Animated.View>}
     </View>
   );
 };

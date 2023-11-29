@@ -5,4 +5,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#1EAED7',
   },
+  gone: {
+    display: 'none',
+  },
 });

@@ -4,7 +4,7 @@ import { View, Text, Pressable } from 'react-native';
 
 import styles from './styles';
 
-const SleepQuestion = () => {
+const SleepQuestion = ({ formButtonHandler }: any) => {
   const [answer, setAnswer] = useState('');
 
   const onPress = (value: string) => {
