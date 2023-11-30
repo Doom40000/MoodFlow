@@ -1,19 +1,18 @@
-import { Provider } from 'react-redux';
-import { persistReducer } from 'redux-persist';
-import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from './store/store';
 import { Feather, Entypo } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { Provider } from 'react-redux';
+import { persistReducer } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import Chart from './components/chart/chart';
 import FlowChart from './screens/FlowChart/FlowChart';
 import Home from './screens/Home/Home';
 import Settings from './screens/Settings/Settings';
-
+import { store, persistor } from './store/store';
 
 const Tab = createBottomTabNavigator();
 
@@ -28,50 +27,47 @@ const CustomScreenOptions = {
   },
   tabBarActiveTintColor: '#1EAED7',
   tabBarInactiveTintColor: 'grey',
-
 };
-
 
 export default function App() {
   return (
     <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-    <View style={styles.container}>
-      <NavigationContainer>
-        <Tab.Navigator screenOptions={CustomScreenOptions}>
-          <Tab.Screen
-            name="Home"
-            component={Home}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Feather name="home" size={size} color={color} />
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="FlowChart"
-            component={FlowChart}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Entypo name="flow-tree" size={size} color={color} />
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="Settings"
-            component={Settings}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Feather name="settings" size={size} color={color} />
-              ),
-            }}
-          />
-        </Tab.Navigator>
-        <StatusBar style="auto" backgroundColor="#ffffff" />
-      </NavigationContainer>
-
-    </View>
-    </PersistGate>
+      <PersistGate loading={null} persistor={persistor}>
+        <View style={styles.container}>
+          <NavigationContainer>
+            <Tab.Navigator screenOptions={CustomScreenOptions}>
+              <Tab.Screen
+                name="Home"
+                component={Home}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Feather name="home" size={size} color={color} />
+                  ),
+                }}
+              />
+              <Tab.Screen
+                name="FlowChart"
+                component={FlowChart}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Entypo name="flow-tree" size={size} color={color} />
+                  ),
+                }}
+              />
+              <Tab.Screen
+                name="Settings"
+                component={Settings}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Feather name="settings" size={size} color={color} />
+                  ),
+                }}
+              />
+            </Tab.Navigator>
+            <StatusBar style="auto" backgroundColor="#ffffff" />
+          </NavigationContainer>
+        </View>
+      </PersistGate>
     </Provider>
   );
 }

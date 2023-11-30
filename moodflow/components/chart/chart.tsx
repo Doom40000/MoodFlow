@@ -1,10 +1,9 @@
-import React, {useState} from "react";
-import { SafeAreaView, FlatList, Text, View, Pressable, Image } from 'react-native';
-import styles from "./chartStyles";
-import ListItem from "./listItem";
+import React, { useState } from 'react';
+import { SafeAreaView, FlatList, Text, View, Pressable } from 'react-native';
 
-const bottomLogo = require('../../assets/bottom-logo.png');
-const logo = require('../../assets/logo.png');
+import styles from './chartStyles';
+import ListItem from './listItem';
+import { QuestionProps } from '../../screens/FlowChart/FlowChart';
 
 const habitsList: string[] = [
   'Sleep quality',
@@ -14,36 +13,32 @@ const habitsList: string[] = [
   'Exercise',
 ];
 
-const Chart = () => {
+const Chart = ({ formButtonHandler }: QuestionProps) => {
   // send checkedItems to db to use for personalised flowChart.
   // check list state does not persist as not saved in db, but can be done later if needed
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
-
-
   return (
-
-
     <SafeAreaView style={styles.container}>
-      <View>
-        <Image  source={logo}/>
+      <View style={styles.list}>
+        <FlatList
+          data={habitsList}
+          keyExtractor={(item) => item}
+          renderItem={({ item }) => (
+            <ListItem
+              item={item}
+              checkedItems={checkedItems}
+              setCheckedItems={setCheckedItems}
+            />
+          )}
+        />
       </View>
-      <View  >
-        <Text style={styles.text} >Please let us know at {"\n"}least three habits that {"\n"}affect your mood: </Text>
-      </View>
-      <View style = {styles.list}>
-      <FlatList
-            data= {habitsList}
-            keyExtractor={( item ) => item}
-            renderItem={({item}) => <ListItem item={item} checkedItems={checkedItems} setCheckedItems={setCheckedItems}/>} />
 
-      </View>
-
-      <Pressable style={styles.press} onPress={() => (console.log('pressed'))}>
+      <Pressable style={styles.press} onPress={formButtonHandler}>
         <Text style={styles.buuttonText}>Finish</Text>
       </Pressable>
     </SafeAreaView>
-  )
-}
+  );
+};
 
 export default Chart;
