@@ -1,8 +1,8 @@
-import React from "react";
-import Svg, { Image } from 'react-native-svg';
+import React from 'react';
 import { View, Dimensions } from 'react-native';
+import Svg, { Image } from 'react-native-svg';
 
-import Chart from "../../components/chart/chart";
+import Chart from '../../components/chart/chart';
 
 const imageSrc = require('../../assets/MoodFlowLogo.png');
 
@@ -10,7 +10,7 @@ const CheckPage = () => {
   const { height, width } = Dimensions.get('window');
 
   return (
-    <View >
+    <View>
       <View style={{ flex: 1 }}>
         <Svg height={height} width={width}>
           <Image
@@ -23,11 +23,9 @@ const CheckPage = () => {
           />
         </Svg>
       </View>
-      <Chart/>
+      <Chart />
     </View>
-
-  )
-}
-
+  );
+};
 
 export default CheckPage;

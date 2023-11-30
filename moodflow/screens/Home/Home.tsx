@@ -3,6 +3,7 @@ import { Dimensions, Text, View } from 'react-native';
 
 import styles from './styles';
 import Logo from '../../components/Logo/Logo';
+import Chart from '../../components/chart/chart';
 const Home = () => {
   const { height, width } = Dimensions.get('window');
   const [quote, setQuote] = useState('');
@@ -22,7 +23,7 @@ const Home = () => {
     };
     fetchData();
   }, []);
-  
+
   return (
     <View style={styles.container}>
       <Logo />
@@ -32,11 +33,7 @@ const Home = () => {
             Here is your quote of the day:
           </Text>
         </View>
-        {/* <View style={styles.quote}> */}
-        <Text style={styles.quoteText}>
-          {quote}
-        </Text>
-        {/* </View> */}
+        <Text style={styles.quoteText}>{quote}</Text>
       </View>
     </View>
   );
