@@ -2,9 +2,10 @@ import { Feather } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import * as location from 'expo-location';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, Platform } from 'react-native';
 
 import Home from './screens/Home/Home';
 import Settings from './screens/Settings/Settings';
@@ -26,6 +27,9 @@ const CustomScreenOptions: BottomTabNavigationOptions = {
 };
 
 export default function App() {
+  const [location, setLocaton] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+
   return (
     <View style={styles.container}>
       <NavigationContainer>

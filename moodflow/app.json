@@ -9,6 +9,14 @@
     "androidStatusBar": {
       "backgroundColor": "#ffffff"
     },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "isAndroidBackgroundLocationEnabled": true
+        }
+      ]
+    ],
     "splash": {
       "image": "./assets/Splash-screen-no-icons.png",
       "resizeMode": "contain",
