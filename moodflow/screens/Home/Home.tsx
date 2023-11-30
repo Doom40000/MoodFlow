@@ -1,28 +1,13 @@
 import React from 'react';
-import { Text, View, Dimensions } from 'react-native';
-import Svg, { Image } from 'react-native-svg';
+import { Text, View } from 'react-native';
 
 import styles from './styles';
-
-const imageSrc = require('../../assets/MoodFlowLogo.png');
+import Logo from '../../components/Logo/Logo';
 
 const Home = () => {
-  const { height, width } = Dimensions.get('window');
-
   return (
     <View style={styles.container}>
-      <View style={{ flex: 1 }}>
-        <Svg height={height} width={width}>
-          <Image
-            testID="Logo"
-            href={imageSrc}
-            width={width}
-            height={height}
-            preserveAspectRatio="xMidYMin meet"
-            y={height / 7.5}
-          />
-        </Svg>
-      </View>
+      <Logo />
       <View style={styles.quoteContainer}>
         <View style={styles.quoteHeader}>
           <Text style={styles.quoteHeaderText}>
