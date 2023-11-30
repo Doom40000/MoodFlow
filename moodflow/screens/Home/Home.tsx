@@ -12,6 +12,7 @@ const Home = () => {
 
   const url = 'https://zenquotes.io/api/quotes';
 
+  // Doesn't work in webview, only on native device (CORS Policy)
   useEffect(() => {
     const fetchData = async () => {
       try {

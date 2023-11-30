@@ -48,7 +48,7 @@ const FlowChart = () => {
     };
   });
 
-  //! Crashes when question > flowChartQuestions.length
+  //! Handle reaching end of questions
   const formButtonHandler = () => {
     formOnePosition.value = 0;
     setTimeout(() => {
@@ -61,10 +61,6 @@ const FlowChart = () => {
   const renderQuestionComponent = () => {
     const QuestionComponent = flowChartQuestions[question];
     return <QuestionComponent formButtonHandler={formButtonHandler} />;
-  };
-
-  const logging = () => {
-    console.log('Hello from le button');
   };
 
   return (
@@ -85,7 +81,6 @@ const FlowChart = () => {
             preserveAspectRatio="xMidYMin meet"
             y={height / 3.9}
             x={width / 7}
-            onPress={() => alert('Go Back')}
           />
         </Svg>
       </View>
