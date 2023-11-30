@@ -9,6 +9,7 @@ import Home from './screens/Home/Home';
 import Journal from './screens/Journal/Journal';
 import Settings from './screens/Settings/Settings';
 
+
 const Tab = createBottomTabNavigator();
 
 const CustomScreenOptions = {
@@ -23,6 +24,7 @@ const CustomScreenOptions = {
   tabBarActiveTintColor: '#1EAED7',
   tabBarInactiveTintColor: 'grey',
 };
+
 
 export default function App() {
   return (
@@ -60,9 +62,9 @@ export default function App() {
         <StatusBar style="auto" backgroundColor="#ffffff" />
       </NavigationContainer>
     </View>
+
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
