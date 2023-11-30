@@ -16,7 +16,6 @@ const JournalEntry = ({ navigation }) => {
   const fetchJournal = async () => {
     const result = await getJournalByIdController(1);
     setJournalEntry(result)
-    console.log(journalEntry[0].title);
   };
 
   const deleteJournal = async () => {
