@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface QuestionState{
+ interface Question3State{
   answer: boolean
 }
 
-export const initialState: QuestionState = {
+export const initialState: Question3State = {
   answer: false
  };
 
@@ -21,3 +21,9 @@ export const question3Slice = createSlice({
 
   }
 })
+
+export const { yes, no } = question3Slice.actions
+
+export default question3Slice.reducer
+
+export type { Question3State };

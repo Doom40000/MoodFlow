@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface QuestionState{
+ interface QuestionState{
   answer: string
 }
 
@@ -13,7 +13,7 @@ export const question1Slice = createSlice({
   initialState,
   reducers: {
     good: (state) => {
-      state.answer = 'good'
+      state.answer = 'good';
     },
     ok: (state) => {
       state.answer = 'ok'
@@ -27,3 +27,4 @@ export const question1Slice = createSlice({
 export const { good, ok, bad } = question1Slice.actions
 
 export default question1Slice.reducer
+export type { QuestionState };

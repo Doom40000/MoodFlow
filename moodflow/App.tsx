@@ -1,3 +1,7 @@
+import { Provider } from 'react-redux';
+import { persistReducer } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './store/store';
 import { Feather, Entypo } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -30,6 +34,8 @@ const CustomScreenOptions = {
 
 export default function App() {
   return (
+    <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
     <View style={styles.container}>
       <NavigationContainer>
         <Tab.Navigator screenOptions={CustomScreenOptions}>
@@ -65,7 +71,8 @@ export default function App() {
       </NavigationContainer>
 
     </View>
-
+    </PersistGate>
+    </Provider>
   );
 }
 const styles = StyleSheet.create({
