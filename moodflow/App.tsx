@@ -1,5 +1,6 @@
 import { Feather } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
@@ -7,10 +8,11 @@ import { View, StyleSheet } from 'react-native';
 
 import Home from './screens/Home/Home';
 import Settings from './screens/Settings/Settings';
+import SupportLinks from './screens/SupportLinks/SupportLinks';
 
 const Tab = createBottomTabNavigator();
 
-const CustomScreenOptions = {
+const CustomScreenOptions: BottomTabNavigationOptions = {
   headerShown: false,
   tabBarStyle: {
     width: '75%',
@@ -34,6 +36,15 @@ export default function App() {
             options={{
               tabBarIcon: ({ color, size }) => (
                 <Feather name="home" size={size} color={color} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="SupportLinks"
+            component={SupportLinks}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <Feather name="external-link" size={size} color={color} />
               ),
             }}
           />
