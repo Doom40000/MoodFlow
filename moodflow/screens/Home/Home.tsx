@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View, Dimensions } from 'react-native';
 import Svg, { Image } from 'react-native-svg';
 
@@ -8,6 +8,22 @@ const imageSrc = require('../../assets/MoodFlowLogo.png');
 
 const Home = () => {
   const { height, width } = Dimensions.get('window');
+  const [quote, setQuote] = useState('');
+
+  const url = 'https://zenquotes.io/api/quotes';
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetch(url);
+        const dataInJson = await data.json();
+        setQuote(dataInJson[0].q + '\n-' + dataInJson[0].a);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -30,9 +46,7 @@ const Home = () => {
           </Text>
         </View>
         {/* <View style={styles.quote}> */}
-        <Text style={styles.quoteText}>
-          “It's not about what it is, it's about what it can become.” Dr. Seuss
-        </Text>
+        <Text style={styles.quoteText}>{quote}</Text>
         {/* </View> */}
       </View>
     </View>
