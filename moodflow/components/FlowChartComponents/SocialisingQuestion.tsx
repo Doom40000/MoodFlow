@@ -7,6 +7,7 @@ import styles from './styles';
 import { QuestionProps } from '../../screens/FlowChart/FlowChart';
 import { yes, no } from '../../store/question5Slice';
 import type { RootState } from '../../store/store';
+import { store } from '../../store/store';
 
 const SocialisingQuestion = ({ formButtonHandler }: QuestionProps) => {
   // const [answer, setAnswer] = useState('');
@@ -26,7 +27,7 @@ const SocialisingQuestion = ({ formButtonHandler }: QuestionProps) => {
         style={styles.button}
         onPress={() => {
           dispatch(yes());
-          formButtonHandler();
+          console.log(store.getState());
         }}
       >
         <Text style={styles.text}>Yes</Text>
@@ -35,7 +36,7 @@ const SocialisingQuestion = ({ formButtonHandler }: QuestionProps) => {
         style={styles.button}
         onPress={() => {
           dispatch(no());
-          formButtonHandler();
+          console.log(store.getState());
         }}
       >
         <Text style={styles.text}>No</Text>
