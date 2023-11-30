@@ -6,6 +6,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import Home from './screens/Home/Home';
+import Journal from './screens/Journal/Journal';
 import Settings from './screens/Settings/Settings';
 
 
@@ -22,7 +23,6 @@ const CustomScreenOptions = {
   },
   tabBarActiveTintColor: '#1EAED7',
   tabBarInactiveTintColor: 'grey',
-
 };
 
 
@@ -41,6 +41,15 @@ export default function App() {
             }}
           />
           <Tab.Screen
+            name="Journal"
+            component={Journal}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <Feather name="pen-tool" size={size} color={color} />
+              ),
+            }}
+          />
+          <Tab.Screen
             name="Settings"
             component={Settings}
             options={{
@@ -52,7 +61,6 @@ export default function App() {
         </Tab.Navigator>
         <StatusBar style="auto" backgroundColor="#ffffff" />
       </NavigationContainer>
-
     </View>
 
   );
@@ -60,5 +68,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#1EAED7',
   },
 });

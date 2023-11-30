@@ -15,6 +15,21 @@ const getAllJournals = async () => {
   });
 };
 
+const getJournalById = async (id: number) => {
+  return new Promise((resolve, reject) => {
+    db.transaction(async (tx) => {
+      tx.executeSql(
+        'select * from journals where id = ?',
+        [id],
+        (_, { rows }) => {
+          const result = rows._array;
+          resolve(result);
+        },
+      );
+    });
+  });
+};
+
 const createJournalEntry = async (title: string, body: string) => {
   db.transaction((tx) => {
     const timestamp = timestampGenerator();
@@ -37,4 +52,9 @@ const deleteJournalEntry = async (id: number) => {
   });
 };
 
-export { getAllJournals, createJournalEntry, deleteJournalEntry };
+export {
+  getAllJournals,
+  getJournalById,
+  createJournalEntry,
+  deleteJournalEntry,
+};

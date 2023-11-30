@@ -4,7 +4,6 @@ import { Text, View } from 'react-native';
 import styles from './styles';
 import Logo from '../../components/Logo/Logo';
 
-const Home = () => {
   return (
     <View style={styles.container}>
       <Logo />
@@ -16,7 +15,7 @@ const Home = () => {
         </View>
         {/* <View style={styles.quote}> */}
         <Text style={styles.quoteText}>
-          “It's not about what it is, it's about what it can become.” Dr. Seuss
+          {quote}
         </Text>
         {/* </View> */}
       </View>
