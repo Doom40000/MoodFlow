@@ -1,10 +1,12 @@
-import { Feather } from '@expo/vector-icons';
+import { Feather, Entypo } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
+import Chart from './components/chart/chart';
+import FlowChart from './screens/FlowChart/FlowChart';
 import Home from './screens/Home/Home';
 import Settings from './screens/Settings/Settings';
 
@@ -37,6 +39,15 @@ export default function App() {
             options={{
               tabBarIcon: ({ color, size }) => (
                 <Feather name="home" size={size} color={color} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="FlowChart"
+            component={FlowChart}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <Entypo name="flow-tree" size={size} color={color} />
               ),
             }}
           />
