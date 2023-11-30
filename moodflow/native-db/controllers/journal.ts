@@ -1,5 +1,6 @@
 import {
   getAllJournals,
+  getJournalById,
   createJournalEntry,
   deleteJournalEntry,
 } from '../models/Journal';
@@ -7,6 +8,11 @@ import {
 const getAllJournalsController = async () => {
   const journals = await getAllJournals();
   return journals;
+};
+
+const getJournalByIdController = async (id: number) => {
+  const journal = await getJournalById(id);
+  return journal;
 };
 
 const createJournalEntryController = async (title: string, body: string) => {
@@ -21,6 +27,7 @@ const deleteJournalEntryController = async (id: number) => {
 
 export {
   getAllJournalsController,
+  getJournalByIdController,
   createJournalEntryController,
   deleteJournalEntryController,
 };

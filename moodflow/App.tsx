@@ -8,8 +8,10 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Platform } from 'react-native';
 
 import Home from './screens/Home/Home';
+import Journal from './screens/Journal/Journal';
 import Settings from './screens/Settings/Settings';
 import SupportLinks from './screens/SupportLinks/SupportLinks';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -25,6 +27,7 @@ const CustomScreenOptions: BottomTabNavigationOptions = {
   tabBarActiveTintColor: '#1EAED7',
   tabBarInactiveTintColor: 'grey',
 };
+
 
 export default function App() {
   const [location, setLocaton] = useState(null);
@@ -44,11 +47,17 @@ export default function App() {
             }}
           />
           <Tab.Screen
+
             name="SupportLinks"
             component={SupportLinks}
             options={{
               tabBarIcon: ({ color, size }) => (
                 <Feather name="external-link" size={size} color={color} />
+            name="Journal"
+            component={Journal}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <Feather name="pen-tool" size={size} color={color} />
               ),
             }}
           />
@@ -65,10 +74,12 @@ export default function App() {
         <StatusBar style="auto" backgroundColor="#ffffff" />
       </NavigationContainer>
     </View>
+
   );
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#1EAED7',
   },
 });
