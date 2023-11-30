@@ -2,13 +2,12 @@ import { Feather } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import Home from './screens/Home/Home';
-import React from 'react';
-
-import Settings from './screens/Settings/Settings';
 import Journal from './screens/Journal/Journal';
+import Settings from './screens/Settings/Settings';
 
 const Tab = createBottomTabNavigator();
 
@@ -40,20 +39,20 @@ export default function App() {
             }}
           />
           <Tab.Screen
-            name="Settings"
-            component={Settings}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Feather name="settings" size={size} color={color} />
-              ),
-            }}
-          />
-          <Tab.Screen
             name="Journal"
             component={Journal}
             options={{
               tabBarIcon: ({ color, size }) => (
                 <Feather name="pen-tool" size={size} color={color} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Settings"
+            component={Settings}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <Feather name="settings" size={size} color={color} />
               ),
             }}
           />
