@@ -9,20 +9,19 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "ts:check": "tsc",
-    "lint": "eslint .",
-    "test": "jest"
+    "lint": "eslint ."
   },
   "jest": {
     "preset": "jest-expo",
     "transformIgnorePatterns": [
       "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
     ]
-
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/native": "^6.1.9",
+    "@reduxjs/toolkit": "^1.9.7",
     "bcrypt": "^5.1.1",
     "expo": "~49.0.15",
     "expo-sqlite": "^11.3.3",
@@ -45,7 +44,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
-    "@testing-library/react-native": "^12.4.0",
     "@testing-library/react-native": "^12.4.0",
     "@tsconfig/react-native": "^3.0.2",
     "@types/jest": "^29.5.10",

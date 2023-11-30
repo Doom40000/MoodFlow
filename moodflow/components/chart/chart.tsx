@@ -1,6 +1,7 @@
 import React, {useState} from "react";
-import { SafeAreaView, FlatList, StyleSheet, Text, View } from 'react-native';
-import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { SafeAreaView, FlatList, Text, View, Pressable } from 'react-native';
+import styles from "./chartStyles";
+import ListItem from "./listItem";
 
 const habitsList: string[] = [
    'Sleep quality',
@@ -11,31 +12,10 @@ const habitsList: string[] = [
   ];
 
 const Chart = () => {
-  let bouncyCheckboxRef: BouncyCheckbox | null = null;
-  const [checkboxState, setCheckboxState] = useState(false);
   // send checkedItems to db to use for personalised flowChart.
   // check list state does not persist as not saved in db, but can be done later if needed
-  const [checkedItems, setCheckedItems] = useState([]);
+  const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
-  const listItem = ({ item }: {item: string}) => {
-    return (
-      <SafeAreaView>
-        <View >
-          <BouncyCheckbox
-          style={styles.listItem}
-          textStyle={styles.textStyle}
-          fillColor="white"
-          ref={(ref: any) => (bouncyCheckboxRef = ref)}
-          isChecked={checkboxState}
-          text={item}
-          onPress={() => {
-            setCheckboxState(!checkboxState);
-            setCheckedItems}}
-          />
-        </View>
-      </SafeAreaView>
-      )
-    }
 
   return (
     <SafeAreaView style= {styles.container}>
@@ -46,43 +26,15 @@ const Chart = () => {
         <FlatList
             data= {habitsList}
             keyExtractor={( item ) => item}
-            renderItem={listItem} />
+            renderItem={({item}) => <ListItem item={item} checkedItems={checkedItems} setCheckedItems={setCheckedItems}/>} />
       </View>
+      <Pressable style={styles.press} onPress={() => (console.log('pressed'))}>
+        <Text style={styles.buuttonText}>Finish</Text>
+      </Pressable>
     </SafeAreaView>
   )
 }
 
-const styles = StyleSheet.create({
-container:{
-  flex: 1,
-  alignItems: 'center',
-  marginTop: 30,
-  backgroundColor: "#1EAED7",
-},
-  listItem: {
-    flex:2,
-    marginTop: 16,
-  },
-  textStyle:{
-    textDecorationLine: "none",
-    color: 'white',
-    fontSize: 25
-  },
-  list: {
-    borderColor: '#ffff',
-    borderStyle: 'solid',
-    borderWidth: 7,
-    borderRadius:10,
-    paddingLeft: 20,
-    paddingRight:50,
-    height: 300
 
-  },
-  text: {
-    marginVertical:50,
-    fontSize: 28,
-    color: 'white'
-  }
-});
 
 export default Chart;
