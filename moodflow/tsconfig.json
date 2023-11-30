@@ -4,9 +4,5 @@
     "jsx": "react",
     "strict": true
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "assets/**/*.svg"
-  ]
+  "include": ["**/*.ts", "**/*.tsx", "assets/**/*.svg", "jest.config.js"]
 }

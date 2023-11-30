@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Dimensions } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -32,6 +32,7 @@ export interface QuestionProps {
 }
 
 const logoSrc = require('../../assets/MoodFlowLogo.png');
+const goBackArrow = require('../../assets/expand_more_FILL0_wght400_GRAD0_opsz24.png');
 
 const FlowChart = () => {
   const { height, width } = Dimensions.get('window');
@@ -62,21 +63,33 @@ const FlowChart = () => {
     return <QuestionComponent formButtonHandler={formButtonHandler} />;
   };
 
+  const logging = () => {
+    console.log('Hello from le button');
+  };
+
   return (
     <View style={styles.container}>
       <View style={{ flex: 1 }}>
         <Svg height={height} width={width}>
           <Image
-            testID="Logo"
             href={logoSrc}
             width={width}
             height={height}
             preserveAspectRatio="xMidYMin meet"
             y={height / 7.5}
           />
+          <Image
+            href={goBackArrow}
+            width={25}
+            height={25}
+            preserveAspectRatio="xMidYMin meet"
+            y={height / 3.9}
+            x={width / 7}
+            onPress={() => alert('Go Back')}
+          />
         </Svg>
       </View>
-      <Animated.View style={[{ flex: 2 }, formOneAnimatedStyle]}>
+      <Animated.View style={[{ flex: 2 }, formOneAnimatedStyle]} testID="view">
         {renderQuestionComponent()}
       </Animated.View>
     </View>
