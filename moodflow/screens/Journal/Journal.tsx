@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import {
   FlatList,
   Text,
@@ -11,10 +13,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import styles from './styles';
 import JournalListItem from '../../components/JournalListItem/JournalListItem';
+import JournalEntry from '../JournalEntry/JournalEntry';
 import {
   getAllJournalsController,
   createJournalEntryController,
 } from '../../native-db/controllers/journal';
+
+const Stack = createStackNavigator();
 
 interface Journal {
   body: string;
