@@ -23,3 +23,7 @@ export const question1Slice = createSlice({
     },
   }
 })
+
+export const { good, ok, bad } = question1Slice.actions
+
+export default question1Slice.reducer
