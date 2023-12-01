@@ -4,6 +4,7 @@ import { Text, View } from 'react-native';
 import styles from './styles';
 import Logo from '../../components/Logo/Logo';
 
+const Home = () => {
   return (
     <View style={styles.container}>
       <Logo />
@@ -15,7 +16,7 @@ import Logo from '../../components/Logo/Logo';
         </View>
         {/* <View style={styles.quote}> */}
         <Text style={styles.quoteText}>
-          {quote}
+          quote
         </Text>
         {/* </View> */}
       </View>

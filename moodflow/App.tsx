@@ -2,13 +2,13 @@ import { Feather } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import * as location from 'expo-location';
+// import * as location from 'expo-location';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Platform } from 'react-native';
 
 import Home from './screens/Home/Home';
-import Journal from './screens/Journal/Journal';
+import JournalStack from './components/JournalStack/JournalStack';
 import Settings from './screens/Settings/Settings';
 import SupportLinks from './screens/SupportLinks/SupportLinks';
 
@@ -53,8 +53,12 @@ export default function App() {
             options={{
               tabBarIcon: ({ color, size }) => (
                 <Feather name="external-link" size={size} color={color} />
+              ),
+              }}
+          />
+          <Tab.Screen
             name="Journal"
-            component={Journal}
+            component={JournalStack}
             options={{
               tabBarIcon: ({ color, size }) => (
                 <Feather name="pen-tool" size={size} color={color} />

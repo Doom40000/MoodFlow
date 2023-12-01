@@ -24,6 +24,11 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     opacity: 0.8,
   },
+  delete: {
+    fontSize: 14,
+    alignSelf: 'flex-end',
+    color: '#FFFFFF',
+  }
 });
 
 export default styles;

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Pressable } from 'react-native';
 
+import { deleteJournalEntryController } from '../../native-db/controllers/journal';
 import styles from './styles';
 
 interface Journal {
@@ -11,6 +12,8 @@ interface Journal {
 }
 
 interface JournalListItemProps {
+  journalEntries: Journal[]
+  setJournalEntries: React.Dispatch<React.SetStateAction<Journal[]>>
   journalItem: Journal;
 }
 
@@ -19,12 +22,23 @@ const parseDate = (date: string) => {
   return formatedDate;
 };
 
-const JournalListItem: React.FC<JournalListItemProps> = ({ journalItem }) => {
+const JournalListItem: React.FC<JournalListItemProps> = ({ journalEntries, setJournalEntries, journalItem }) => {
+
+  const deleteJournal = async () => {
+    await deleteJournalEntryController(journalItem.id);
+    setJournalEntries(journalEntries.filter(e => e.id !== journalItem.id))
+  }
+
   return (
     <View style={styles.listItemContainer}>
       <Text style={styles.mediumHeading}>{journalItem.title}</Text>
       <Text style={styles.paragraph}>{journalItem.body}</Text>
       <Text style={styles.date}>{parseDate(journalItem.created_at)}</Text>
+      <Pressable
+        onPress={() => deleteJournal()}
+      >
+        <Text style={styles.delete}>Delete</Text>
+      </Pressable>
     </View>
   );
 };

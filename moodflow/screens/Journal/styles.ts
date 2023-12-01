@@ -18,9 +18,12 @@ const styles = StyleSheet.create({
     marginTop: 16,
     marginBottom: 16,
   },
+  contentContainer: {
+    paddingHorizontal: 20,
+    paddingBottom: 20
+  },
   container: {
     flex: 1,
-    padding: 20,
     alignContent: 'center',
     backgroundColor: '#1FADD7',
     width: '100%',
