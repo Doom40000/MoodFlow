@@ -3,7 +3,6 @@ import React from 'react';
 import { Text, View } from 'react-native';
 
 import styles from './styles';
-import Logo from '../../components/Logo/Logo';
 import { store } from '../../store/store';
 import type { RootState } from '../../store/store';
 
@@ -30,10 +29,10 @@ const makeFeedback = (state: RootState) => {
     // If all answers are positive but the first question returns 'bad' then add additional prompt.
     state.question1.answer === 'good'
       ? (answersObject.answer1 =
-          "That's great to hear that you're having a good day, keep it up!")
+          "That's great to hear that you're having a good day, keep it up \n \n!")
       : state.question1.answer === 'ok'
         ? (answersObject.answer1 =
-            "It's good to hear that your day is ok, we hope it keeps getting better. \n")
+            "It's good to hear that your day is ok, we hope it keeps getting better. \n \n")
         : (answersObject.answer1 =
             "We're sorry to hear that you're not having a good day. We hope we can help suggest some positive changes for your day. \n \n");
 
