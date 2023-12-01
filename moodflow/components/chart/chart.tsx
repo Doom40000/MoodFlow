@@ -20,6 +20,10 @@ const Chart = ({ formButtonHandler }: QuestionProps) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Text style={styles.text}>
+        Please let us know at least 3 habits that affect your mood:
+      </Text>
+
       <View style={styles.list}>
         <FlatList
           data={habitsList}

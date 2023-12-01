@@ -14,6 +14,7 @@ import SleepQuestion from '../../components/FlowChartComponents/SleepQuestion';
 import SocialisingQuestion from '../../components/FlowChartComponents/SocialisingQuestion';
 import Logo from '../../components/Logo/Logo';
 import Chart from '../../components/chart/chart';
+import Feedback from '../Feedback/Feedback';
 import styles from '../Home/styles';
 // Import all the components, pass one of them into the state, setting the state as the first questions.
 // When you push the button, you record the result and set the state with the next index in the array.
@@ -26,6 +27,7 @@ const flowChartQuestions = [
   ExerciseQuestion,
   SleepQuestion,
   SocialisingQuestion,
+  Feedback,
 ];
 
 type FormButtonHandlerType = () => void;

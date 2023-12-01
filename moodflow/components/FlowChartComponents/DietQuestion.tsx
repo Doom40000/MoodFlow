@@ -19,9 +19,7 @@ const DietQuestion = ({ formButtonHandler }: QuestionProps) => {
   // };
   return (
     <View style={styles.container}>
-      <Text style={styles.questionText}>
-        Have you eaten a balanced diet today?
-      </Text>
+      <Text style={styles.questionText}>Have you eaten enough today?</Text>
       <Pressable
         style={styles.button}
         onPress={() => {

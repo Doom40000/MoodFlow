@@ -27,7 +27,7 @@ const SocialisingQuestion = ({ formButtonHandler }: QuestionProps) => {
         style={styles.button}
         onPress={() => {
           dispatch(yes());
-          console.log(store.getState());
+          formButtonHandler();
         }}
       >
         <Text style={styles.text}>Yes</Text>
@@ -36,7 +36,7 @@ const SocialisingQuestion = ({ formButtonHandler }: QuestionProps) => {
         style={styles.button}
         onPress={() => {
           dispatch(no());
-          console.log(store.getState());
+          formButtonHandler();
         }}
       >
         <Text style={styles.text}>No</Text>
