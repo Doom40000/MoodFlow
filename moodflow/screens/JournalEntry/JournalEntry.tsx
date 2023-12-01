@@ -6,15 +6,24 @@ import { getJournalByIdController, deleteJournalEntryController } from '../../na
 
 import styles from './styles';
 
-const JournalEntry = ({ navigation }) => {
-  const [ journalEntry, setJournalEntry ] = useState<any>({})
+interface Journal {
+  body: string;
+  created_at: string;
+  id: number;
+  title: string;
+}
+
+const JournalEntry = ({ route, navigation }) => {
+  const [ journalEntry, setJournalEntry ] = useState<Journal[]>([])
+
+  const { entryId } = route.params;
 
   useEffect(() => {
     fetchJournal();
   },[]);
 
   const fetchJournal = async () => {
-    const result = await getJournalByIdController(1);
+    const result = await getJournalByIdController(entryId);
     setJournalEntry(result)
   };
 
@@ -31,7 +40,7 @@ const JournalEntry = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       {
-        journalEntry ?
+        journalEntry.length ?
         <View>
           <Text style={styles.bigHeading}>{journalEntry[0].title}</Text>
           <Text style={styles.mediumHeading}>{parseDate(journalEntry[0].created_at)}</Text>

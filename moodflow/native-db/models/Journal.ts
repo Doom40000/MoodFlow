@@ -1,7 +1,14 @@
 import { timestampGenerator } from '../helpers';
 import db from '../index';
 
-const getAllJournals = async () => {
+interface Journal {
+  body: string;
+  created_at: string;
+  id: number;
+  title: string;
+}
+
+const getAllJournals = async (): Promise<Journal[]> => {
   return new Promise((resolve, reject) => {
     db.transaction(async (tx) => {
       tx.executeSql(
@@ -15,7 +22,7 @@ const getAllJournals = async () => {
   });
 };
 
-const getJournalById = async (id: number) => {
+const getJournalById = async (id: number): Promise<Journal[]> => {
   return new Promise((resolve, reject) => {
     db.transaction(async (tx) => {
       tx.executeSql(

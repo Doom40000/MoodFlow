@@ -2,6 +2,7 @@ import { Feather, Entypo } from '@expo/vector-icons';
 
 import 'react-native-gesture-handler';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
@@ -14,7 +15,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import Chart from './components/chart/chart';
 import FlowChart from './screens/FlowChart/FlowChart';
 import Home from './screens/Home/Home';
-import Journal from './screens/Journal/Journal';
+import JournalStack from './components/JournalStack/JournalStack';
 import Settings from './screens/Settings/Settings';
 import { store, persistor } from './store/store';
 import Resources from './screens/Resources/Resources';
@@ -22,7 +23,7 @@ import Resources from './screens/Resources/Resources';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-const CustomScreenOptions = {
+const CustomScreenOptions: BottomTabNavigationOptions = {
   headerShown: false,
   tabBarStyle: {
     width: '75%',
@@ -36,6 +37,9 @@ const CustomScreenOptions = {
 };
 
 export default function App() {
+  const [location, setLocaton] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -79,14 +83,14 @@ export default function App() {
                 }}
               />
                                     <Tab.Screen
-                name="Journal"
-                component={Journal}
-                options={{
-                  tabBarIcon: ({ color, size }) => (
-                    <Feather name="settings" size={size} color={color} />
-                  ),
-                }}
-              />
+            name="Journal"
+            component={JournalStack}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <Feather name="pen-tool" size={size} color={color} />
+              ),
+            }}
+          />
             </Tab.Navigator>
             <StatusBar style="auto" backgroundColor="#ffffff" />
           </NavigationContainer>
