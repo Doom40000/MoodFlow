@@ -1,19 +1,27 @@
-import { Feather } from '@expo/vector-icons';
+import { Feather, Entypo } from '@expo/vector-icons';
+
+import 'react-native-gesture-handler';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-// import * as location from 'expo-location';
+import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Platform } from 'react-native';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Provider } from 'react-redux';
+import { persistReducer } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
 
+import Chart from './components/chart/chart';
+import FlowChart from './screens/FlowChart/FlowChart';
 import Home from './screens/Home/Home';
 import JournalStack from './components/JournalStack/JournalStack';
 import Settings from './screens/Settings/Settings';
-import SupportLinks from './screens/SupportLinks/SupportLinks';
-
+import { store, persistor } from './store/store';
+import Resources from './screens/Resources/Resources';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 const CustomScreenOptions: BottomTabNavigationOptions = {
   headerShown: false,
@@ -28,35 +36,53 @@ const CustomScreenOptions: BottomTabNavigationOptions = {
   tabBarInactiveTintColor: 'grey',
 };
 
-
 export default function App() {
   const [location, setLocaton] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
 
   return (
-    <View style={styles.container}>
-      <NavigationContainer>
-        <Tab.Navigator screenOptions={CustomScreenOptions}>
-          <Tab.Screen
-            name="Home"
-            component={Home}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Feather name="home" size={size} color={color} />
-              ),
-            }}
-          />
-          <Tab.Screen
-
-            name="SupportLinks"
-            component={SupportLinks}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Feather name="external-link" size={size} color={color} />
-              ),
-              }}
-          />
-          <Tab.Screen
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <View style={styles.container}>
+          <NavigationContainer>
+            <Tab.Navigator screenOptions={CustomScreenOptions}>
+              <Tab.Screen
+                name="Home"
+                component={Home}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Feather name="home" size={size} color={color} />
+                  ),
+                }}
+              />
+              <Tab.Screen
+                name="FlowChart"
+                component={FlowChart}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Entypo name="flow-tree" size={size} color={color} />
+                  ),
+                }}
+              />
+              <Tab.Screen
+                name="Settings"
+                component={Settings}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Feather name="settings" size={size} color={color} />
+                  ),
+                }}
+              />
+                            <Tab.Screen
+                name="Resources"
+                component={Resources}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Feather name="settings" size={size} color={color} />
+                  ),
+                }}
+              />
+                                    <Tab.Screen
             name="Journal"
             component={JournalStack}
             options={{
@@ -65,20 +91,12 @@ export default function App() {
               ),
             }}
           />
-          <Tab.Screen
-            name="Settings"
-            component={Settings}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Feather name="settings" size={size} color={color} />
-              ),
-            }}
-          />
-        </Tab.Navigator>
-        <StatusBar style="auto" backgroundColor="#ffffff" />
-      </NavigationContainer>
-    </View>
-
+            </Tab.Navigator>
+            <StatusBar style="auto" backgroundColor="#ffffff" />
+          </NavigationContainer>
+        </View>
+      </PersistGate>
+    </Provider>
   );
 }
 const styles = StyleSheet.create({
