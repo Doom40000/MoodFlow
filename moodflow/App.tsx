@@ -1,6 +1,9 @@
 import { Feather, Entypo } from '@expo/vector-icons';
+
+import 'react-native-gesture-handler';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
@@ -11,10 +14,13 @@ import { PersistGate } from 'redux-persist/integration/react';
 import Chart from './components/chart/chart';
 import FlowChart from './screens/FlowChart/FlowChart';
 import Home from './screens/Home/Home';
+import Journal from './screens/Journal/Journal';
 import Settings from './screens/Settings/Settings';
 import { store, persistor } from './store/store';
+import Resources from './screens/Resources/Resources';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 const CustomScreenOptions = {
   headerShown: false,
@@ -57,6 +63,24 @@ export default function App() {
               <Tab.Screen
                 name="Settings"
                 component={Settings}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Feather name="settings" size={size} color={color} />
+                  ),
+                }}
+              />
+                            <Tab.Screen
+                name="Resources"
+                component={Resources}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Feather name="settings" size={size} color={color} />
+                  ),
+                }}
+              />
+                                    <Tab.Screen
+                name="Journal"
+                component={Journal}
                 options={{
                   tabBarIcon: ({ color, size }) => (
                     <Feather name="settings" size={size} color={color} />
