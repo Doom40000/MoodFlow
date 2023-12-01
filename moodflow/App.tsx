@@ -1,16 +1,18 @@
+import 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-
 import Home from './screens/Home/Home';
 import Journal from './screens/Journal/Journal';
 import Settings from './screens/Settings/Settings';
-
+import Resources from './screens/Resources/Resources';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 const CustomScreenOptions = {
   headerShown: false,
@@ -25,6 +27,14 @@ const CustomScreenOptions = {
   tabBarInactiveTintColor: 'grey',
 };
 
+function MyStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Resources" component={Resources} />
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
   return (
@@ -58,11 +68,19 @@ export default function App() {
               ),
             }}
           />
+          <Tab.Screen
+            name="Resources"
+            component={Resources}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <Feather name="settings" size={size} color={color} />
+              ),
+            }}
+          />
         </Tab.Navigator>
         <StatusBar style="auto" backgroundColor="#ffffff" />
       </NavigationContainer>
     </View>
-
   );
 }
 const styles = StyleSheet.create({
