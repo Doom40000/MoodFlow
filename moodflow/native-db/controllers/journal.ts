@@ -6,23 +6,40 @@ import {
 } from '../models/Journal';
 
 const getAllJournalsController = async () => {
-  const journals = await getAllJournals();
-  return journals;
+  try {
+    const journals = await getAllJournals();
+    return journals;
+  } catch (error) {
+    console.log(error);
+  }
+  
 };
 
 const getJournalByIdController = async (id: number) => {
-  const journal = await getJournalById(id);
-  return journal;
+  try {
+    const journal = await getJournalById(id);
+    return journal;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const createJournalEntryController = async (title: string, body: string) => {
-  await createJournalEntry(title, body);
-  return 'Journal entry succesfully added';
+  try {
+    await createJournalEntry(title, body);
+    return 'Journal entry succesfully added';
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 const deleteJournalEntryController = async (id: number) => {
-  await deleteJournalEntry(id);
-  return `Journal entry ${id} succesfully deleted`;
+  try {
+    await deleteJournalEntry(id);
+    return `Journal entry ${id} succesfully deleted`;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export {

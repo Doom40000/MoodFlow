@@ -6,7 +6,7 @@ import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
 import { persistReducer } from 'redux-persist';
@@ -73,7 +73,7 @@ export default function App() {
                   ),
                 }}
               />
-                            <Tab.Screen
+              <Tab.Screen
                 name="Resources"
                 component={Resources}
                 options={{
@@ -82,15 +82,15 @@ export default function App() {
                   ),
                 }}
               />
-                                    <Tab.Screen
-            name="Journal"
-            component={JournalStack}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Feather name="pen-tool" size={size} color={color} />
-              ),
-            }}
-          />
+              <Tab.Screen
+                name="Journal"
+                component={JournalStack}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Feather name="pen-tool" size={size} color={color} />
+                  ),
+                }}
+              />
             </Tab.Navigator>
             <StatusBar style="auto" backgroundColor="#ffffff" />
           </NavigationContainer>

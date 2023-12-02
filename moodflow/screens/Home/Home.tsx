@@ -22,8 +22,7 @@ const Home = () => {
     };
     fetchData();
   }, []);
-
-const Home = () => {
+  
   return (
     <View style={styles.container}>
       <Logo />
