@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, Dimensions } from 'react-native';
+import React, { useState } from 'react';
+import { View } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -7,6 +7,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
+import { receiveNodes } from '../../api/Feedback/feedback_api';
 import DayQuestion from '../../components/FlowChartComponents/DayQuestion';
 import DietQuestion from '../../components/FlowChartComponents/DietQuestion';
 import ExerciseQuestion from '../../components/FlowChartComponents/ExerciseQuestion';
@@ -16,7 +17,6 @@ import Logo from '../../components/Logo/Logo';
 import Chart from '../../components/chart/chart';
 import Feedback from '../Feedback/Feedback';
 import styles from '../Home/styles';
-import { receiveNodes } from '../../api/Feedback/feedback_api';
 // Import all the components, pass one of them into the state, setting the state as the first questions.
 // When you push the button, you record the result and set the state with the next index in the array.
 // Components = [1,2,3,4,5,6,7]
@@ -36,11 +36,7 @@ export interface QuestionProps {
   formButtonHandler: FormButtonHandlerType;
 }
 
-const logoSrc = require('../../assets/MoodFlowLogo.png');
-const goBackArrow = require('../../assets/expand_more_FILL0_wght400_GRAD0_opsz24.png');
-
 const FlowChart = () => {
-  const { height, width } = Dimensions.get('window');
   const formOnePosition = useSharedValue(1);
   const [question, setQuestion] = useState(0);
 
