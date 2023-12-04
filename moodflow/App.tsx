@@ -1,5 +1,4 @@
 import { Feather, Entypo } from '@expo/vector-icons';
-
 import 'react-native-gesture-handler';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
