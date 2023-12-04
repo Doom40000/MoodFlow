@@ -7,7 +7,6 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { receiveNodes } from '../../api/Feedback/feedback_api';
 import DayQuestion from '../../components/FlowChartComponents/DayQuestion';
 import DietQuestion from '../../components/FlowChartComponents/DietQuestion';
 import ExerciseQuestion from '../../components/FlowChartComponents/ExerciseQuestion';
@@ -53,8 +52,6 @@ const FlowChart = () => {
       transform: [{ translateY: withTiming(interpolation, { duration: 800 }) }],
     };
   });
-
-  receiveNodes();
 
   //! Handle reaching end of questions
   const formButtonHandler = () => {
