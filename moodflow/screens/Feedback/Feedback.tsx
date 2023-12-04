@@ -3,6 +3,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 
 import styles from './styles';
+import { createNodes } from '../../api/Feedback/feedback_api';
 import { store } from '../../store/store';
 import type { RootState } from '../../store/store';
 
@@ -78,7 +79,44 @@ const Feedback = () => {
 
   // For day question, we can have a string that says: if good: 'It seems that you're having a good day, that's great!'
 
-  console.log(state);
+  // -> Call to backend START
+  const dateToday = new Date();
+  const questions = [
+    {
+      question: 'question1',
+      answer: state.question1.answer as string | boolean,
+      date: dateToday,
+      relationship: 'HAS_ANSWERED',
+    },
+    {
+      question: 'question2',
+      answer: state.question2.answer as string | boolean,
+      date: dateToday,
+      relationship: 'HAS_ANSWERED',
+    },
+    {
+      question: 'question3',
+      answer: state.question3.answer as string | boolean,
+      date: dateToday,
+      relationship: 'HAS_ANSWERED',
+    },
+    {
+      question: 'question4',
+      answer: state.question4.answer as string | boolean,
+      date: dateToday,
+      relationship: 'HAS_ANSWERED',
+    },
+    {
+      question: 'question5',
+      answer: state.question5.answer as string | boolean,
+      date: dateToday,
+      relationship: 'HAS_ANSWERED',
+    },
+  ];
+
+  createNodes(questions);
+  // -> Call to backend END
+
   return (
     <View style={styles.container}>
       <Text style={styles.feedbackText}>{feedBackText}</Text>

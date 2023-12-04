@@ -1,12 +1,11 @@
-import React, {useState} from "react";
+import React, { useState } from 'react';
 import { SafeAreaView, FlatList, Text, View, Pressable } from 'react-native';
 
 const SummaryPage = (state: any) => {
-
   const summary: string = '';
   const suggestions: string = '';
 
-  return(
+  return (
     <SafeAreaView>
       <View>
         <Text>It looks like today you {summary}</Text>
@@ -15,5 +14,5 @@ const SummaryPage = (state: any) => {
         <Text>We suggest that you try {suggestions}</Text>
       </View>
     </SafeAreaView>
-  )
-}
+  );
+};

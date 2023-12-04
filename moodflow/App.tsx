@@ -1,27 +1,22 @@
 import { Feather, Entypo } from '@expo/vector-icons';
-
 import 'react-native-gesture-handler';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
-import { persistReducer } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import Chart from './components/chart/chart';
+import JournalStack from './components/JournalStack/JournalStack';
 import FlowChart from './screens/FlowChart/FlowChart';
 import Home from './screens/Home/Home';
-import JournalStack from './components/JournalStack/JournalStack';
+import Resources from './screens/Resources/Resources';
 import Settings from './screens/Settings/Settings';
 import { store, persistor } from './store/store';
-import Resources from './screens/Resources/Resources';
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
 
 const CustomScreenOptions: BottomTabNavigationOptions = {
   headerShown: false,
@@ -37,9 +32,6 @@ const CustomScreenOptions: BottomTabNavigationOptions = {
 };
 
 export default function App() {
-  const [location, setLocaton] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
-
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -73,7 +65,7 @@ export default function App() {
                   ),
                 }}
               />
-                            <Tab.Screen
+              <Tab.Screen
                 name="Resources"
                 component={Resources}
                 options={{
@@ -82,15 +74,15 @@ export default function App() {
                   ),
                 }}
               />
-                                    <Tab.Screen
-            name="Journal"
-            component={JournalStack}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Feather name="pen-tool" size={size} color={color} />
-              ),
-            }}
-          />
+              <Tab.Screen
+                name="Journal"
+                component={JournalStack}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Feather name="pen-tool" size={size} color={color} />
+                  ),
+                }}
+              />
             </Tab.Navigator>
             <StatusBar style="auto" backgroundColor="#ffffff" />
           </NavigationContainer>
