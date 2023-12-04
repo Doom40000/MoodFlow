@@ -3,6 +3,7 @@ import { Dimensions, Text, View } from 'react-native';
 
 import styles from './styles';
 import Logo from '../../components/Logo/Logo';
+
 const Home = () => {
   const { height, width } = Dimensions.get('window');
   const [quote, setQuote] = useState('');
@@ -23,7 +24,6 @@ const Home = () => {
     fetchData();
   }, []);
 
-const Home = () => {
   return (
     <View style={styles.container}>
       <Logo />

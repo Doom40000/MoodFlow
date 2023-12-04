@@ -14,7 +14,7 @@ interface Journal {
 }
 
 const JournalEntry = ({ route, navigation }) => {
-  const [ journalEntry, setJournalEntry ] = useState<Journal[]>([])
+  const [ journalEntry, setJournalEntry ] = useState<Journal[] | []>([])
 
   const { entryId } = route.params;
 
@@ -29,7 +29,8 @@ const JournalEntry = ({ route, navigation }) => {
 
   const deleteJournal = async () => {
     await deleteJournalEntryController(journalEntry[0].id);
-    navigation.navigate('Journal')
+    console.log
+    navigation.navigate('Journals')
   }
 
   const parseDate = (date: string) => {
@@ -50,7 +51,6 @@ const JournalEntry = ({ route, navigation }) => {
           <Text style={styles.bigHeading}>Journal entry doesn't exist</Text>
         </View>
       }
-      
       <Pressable
         onPress={() => deleteJournal()}
         style={styles.buttonPrimary}

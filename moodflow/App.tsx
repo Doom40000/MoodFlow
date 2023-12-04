@@ -6,7 +6,7 @@ import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
 import { persistReducer } from 'redux-persist';
@@ -17,6 +17,7 @@ import FlowChart from './screens/FlowChart/FlowChart';
 import Home from './screens/Home/Home';
 import JournalStack from './components/JournalStack/JournalStack';
 import Settings from './screens/Settings/Settings';
+import SocialFeed from './screens/SocialFeed/SocialFeed';
 import { store, persistor } from './store/store';
 import Resources from './screens/Resources/Resources';
 
@@ -65,15 +66,15 @@ export default function App() {
                 }}
               />
               <Tab.Screen
-                name="Settings"
-                component={Settings}
+                name="Feed"
+                component={SocialFeed}
                 options={{
                   tabBarIcon: ({ color, size }) => (
                     <Feather name="settings" size={size} color={color} />
                   ),
                 }}
               />
-                            <Tab.Screen
+              <Tab.Screen
                 name="Resources"
                 component={Resources}
                 options={{
@@ -82,15 +83,15 @@ export default function App() {
                   ),
                 }}
               />
-                                    <Tab.Screen
-            name="Journal"
-            component={JournalStack}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Feather name="pen-tool" size={size} color={color} />
-              ),
-            }}
-          />
+              <Tab.Screen
+                name="Journal"
+                component={JournalStack}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Feather name="pen-tool" size={size} color={color} />
+                  ),
+                }}
+              />
             </Tab.Navigator>
             <StatusBar style="auto" backgroundColor="#ffffff" />
           </NavigationContainer>
