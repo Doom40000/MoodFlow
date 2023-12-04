@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Dimensions, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 import styles from './styles';
 import Logo from '../../components/Logo/Logo';
 const Home = () => {
-  const { height, width } = Dimensions.get('window');
   const [quote, setQuote] = useState('');
 
   const url = 'https://zenquotes.io/api/quotes';

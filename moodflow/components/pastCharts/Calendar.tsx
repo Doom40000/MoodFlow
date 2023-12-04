@@ -1,10 +1,10 @@
 import { Moment } from 'moment';
 import React from 'react';
-import {
-  View
-} from 'react-native';
+import { View, ViewStyle } from 'react-native';
 import CalendarPicker, {DateChangedCallback} from 'react-native-calendar-picker';
 import DayChart from './DayChart';
+import { receiveNodes } from '../../api/Feedback/feedback_api';
+import styles from './CalendarStyles';
 
 function formatDate(inputDate: Moment): string {
     const dateObject: Date = inputDate.toDate();
@@ -26,15 +26,20 @@ const Calendar = () => {
 
   const onDateChange: DateChangedCallback  = (date) => {
     console.log(formatDate(date))
-    const charts: question[] = getChartsPlaceholder(date);
+    // TODO type any to fix here (and add date parameter when controller fixed)
+    const charts = date;
 
     return <DayChart charts={charts}/>
   }
 
   return (
-    <View >
+    <View style={styles.container}>
       <CalendarPicker
+        selectedDayColor= 'white'
+        todayBackgroundColor= 'pink'
+        textStyle= 'white'
         onDateChange={onDateChange}
+
       />
     </View>
   );

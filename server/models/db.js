@@ -10,7 +10,4 @@ const driver = neo4j.driver(
 );
 const session = driver.session();
 
-// Sample Name to try fetching from Backend
-let sampleData = ["Dennis", "Someone else"];
-
-module.exports = { sampleData, session };
+module.exports = { session };
