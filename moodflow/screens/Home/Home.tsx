@@ -1,14 +1,21 @@
+import { Ionicons } from '@expo/vector-icons';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import React, { useEffect, useState } from 'react';
-import { Dimensions, Text, View } from 'react-native';
+import { Dimensions, Text, View, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
 import Logo from '../../components/Logo/Logo';
+import CreatePost from '../CreatePost/CreatePost';
 
-const Home = () => {
+const Stack = createStackNavigator();
+
+const Home: React.FC = () => {
   const { height, width } = Dimensions.get('window');
   const [quote, setQuote] = useState('');
+  const navigation = useNavigation();
 
-  const url = 'https://zenquotes.io/api/quotes';
+  const url = 'https://zenquotes.io/api/today';
 
   // Doesn't work in webview, only on native device (CORS Policy)
   useEffect(() => {
@@ -24,6 +31,10 @@ const Home = () => {
     fetchData();
   }, []);
 
+  const handleSocialIconPress = () => {
+    console.log('Pressed');
+  };
+
   return (
     <View style={styles.container}>
       <Logo />
@@ -33,9 +44,13 @@ const Home = () => {
             Here is your quote of the day:
           </Text>
         </View>
-        {/* <View style={styles.quote}> */}
         <Text style={styles.quoteText}>{quote}</Text>
-        {/* </View> */}
+      </View>
+      <View style={styles.iconContainer}>
+        <TouchableOpacity onPress={handleSocialIconPress}>
+          <Ionicons name="people" size={64} color="white" />
+          <Text style={styles.iconText}>Social</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
