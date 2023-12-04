@@ -47,7 +47,6 @@ const Calendar = () => {
     };
     const charts = await fetchChart();
 
-    // commented charts out because right now it doesn't throw any errors
     return <DayChart charts={charts} />;
   };
 
