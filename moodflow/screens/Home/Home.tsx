@@ -23,7 +23,6 @@ const Home = () => {
     fetchData();
   }, []);
 
-const Home = () => {
   return (
     <View style={styles.container}>
       <Logo />
@@ -33,9 +32,7 @@ const Home = () => {
             Here is your quote of the day:
           </Text>
         </View>
-        {/* <View style={styles.quote}> */}
         <Text style={styles.quoteText}>{quote}</Text>
-        {/* </View> */}
       </View>
     </View>
   );

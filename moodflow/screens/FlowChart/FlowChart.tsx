@@ -12,6 +12,9 @@ import DietQuestion from '../../components/FlowChartComponents/DietQuestion';
 import ExerciseQuestion from '../../components/FlowChartComponents/ExerciseQuestion';
 import SleepQuestion from '../../components/FlowChartComponents/SleepQuestion';
 import SocialisingQuestion from '../../components/FlowChartComponents/SocialisingQuestion';
+import ActivityQuestion from '../../components/FlowChartComponents/ActivityQuestion';
+import PositivityQuestion from '../../components/FlowChartComponents/Positivity';
+
 import Logo from '../../components/Logo/Logo';
 import Chart from '../../components/chart/chart';
 import Feedback from '../Feedback/Feedback';
@@ -27,6 +30,8 @@ const flowChartQuestions = [
   ExerciseQuestion,
   SleepQuestion,
   SocialisingQuestion,
+  ActivityQuestion,
+  PositivityQuestion,
   Feedback,
 ];
 

@@ -6,7 +6,7 @@ import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
 import { persistReducer } from 'redux-persist';
@@ -19,6 +19,7 @@ import JournalStack from './components/JournalStack/JournalStack';
 import Settings from './screens/Settings/Settings';
 import { store, persistor } from './store/store';
 import Resources from './screens/Resources/Resources';
+import CalendarPage from './screens/Calendar/Calendar';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -66,7 +67,7 @@ export default function App() {
               />
               <Tab.Screen
                 name="Settings"
-                component={Settings}
+                component={CalendarPage}
                 options={{
                   tabBarIcon: ({ color, size }) => (
                     <Feather name="settings" size={size} color={color} />
