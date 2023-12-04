@@ -3,7 +3,6 @@ import 'react-native-gesture-handler';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
@@ -11,16 +10,15 @@ import { Provider } from 'react-redux';
 import { persistReducer } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import HomeStack from './components/HomeStack/HomeStack';
 import JournalStack from './components/JournalStack/JournalStack';
 import Chart from './components/chart/chart';
 import FlowChart from './screens/FlowChart/FlowChart';
-import Home from './screens/Home/Home';
 import Resources from './screens/Resources/Resources';
 import Settings from './screens/Settings/Settings';
 import { store, persistor } from './store/store';
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
 
 const CustomScreenOptions: BottomTabNavigationOptions = {
   headerShown: false,
@@ -46,8 +44,8 @@ export default function App() {
           <NavigationContainer>
             <Tab.Navigator screenOptions={CustomScreenOptions}>
               <Tab.Screen
-                name="Home"
-                component={Home}
+                name="HomeStack"
+                component={HomeStack}
                 options={{
                   tabBarIcon: ({ color, size }) => (
                     <Feather name="home" size={size} color={color} />

@@ -4,13 +4,18 @@ import React from 'react';
 import CreatePost from '../../screens/CreatePost/CreatePost';
 import Home from '../../screens/Home/Home';
 
-const Stack = createStackNavigator();
+export type RootStackParamList = {
+  Home: undefined;
+  'Create Post': undefined;
+};
+
+const Stack = createStackNavigator<RootStackParamList>();
 
 const HomeStack: React.FC = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Home">
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="CreatePost" component={CreatePost} />
+      <Stack.Screen name="Create Post" component={CreatePost} />
     </Stack.Navigator>
   );
 };

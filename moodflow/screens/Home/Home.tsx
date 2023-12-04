@@ -1,19 +1,21 @@
 import { Ionicons } from '@expo/vector-icons';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useEffect, useState } from 'react';
-import { Dimensions, Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
+import { RootStackParamList } from '../../components/HomeStack/HomeStack';
 import Logo from '../../components/Logo/Logo';
-import CreatePost from '../CreatePost/CreatePost';
 
-const Stack = createStackNavigator();
+type createPostProp = StackNavigationProp<RootStackParamList, 'Create Post'>;
 
 const Home: React.FC = () => {
-  const { height, width } = Dimensions.get('window');
   const [quote, setQuote] = useState('');
-  const navigation = useNavigation();
+  const navigation = useNavigation<createPostProp>();
+  React.useEffect(() => {
+    navigation.setOptions({ headerShown: false });
+  }, [navigation]);
 
   const url = 'https://zenquotes.io/api/today';
 
@@ -32,7 +34,7 @@ const Home: React.FC = () => {
   }, []);
 
   const handleSocialIconPress = () => {
-    console.log('Pressed');
+    navigation.navigate('Create Post');
   };
 
   return (
