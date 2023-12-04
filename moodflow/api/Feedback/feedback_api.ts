@@ -28,9 +28,9 @@ export async function createNodes(questions: questionsInt[]) {
   }
 }
 
-export async function receiveNodes() {
+export async function receiveNodes(date: Date | string) {
   try {
-    const response = await axios.get(neo4jReceivepoint);
+    const response = await axios.get(neo4jReceivepoint + date);
     console.log(response);
     return response;
   } catch (error) {
