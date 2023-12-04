@@ -8,7 +8,7 @@ interface question {
   answer: string
 }
 
-const DayChart = ({charts}:{charts: question[]}) => {
+const DayChart = ({charts}:{charts: any}) => {
   return(
     <View >
     <FlatList

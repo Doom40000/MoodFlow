@@ -25,9 +25,9 @@ interface question{
 const Calendar = () => {
 
   const onDateChange: DateChangedCallback  = (date) => {
-    console.log(formatDate(date))
+    const dateString = formatDate(date)
     // TODO type any to fix here (and add date parameter when controller fixed)
-    const charts = date;
+    const charts = receiveNodes(dateString);
 
     return <DayChart charts={charts}/>
   }
@@ -37,7 +37,6 @@ const Calendar = () => {
       <CalendarPicker
         selectedDayColor= 'white'
         todayBackgroundColor= 'pink'
-        textStyle= 'white'
         onDateChange={onDateChange}
 
       />

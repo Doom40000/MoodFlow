@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const neo4jEndpoint = 'http://localhost:3001/postReq';
-const neo4jReceivepoint = 'http://localhost:3001/getReq';
+const neo4jReceivepoint = 'http://localhost:3001/getReq/';
 
 interface questionsInt {
   question: string;
