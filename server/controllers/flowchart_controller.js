@@ -1,6 +1,5 @@
-const { sampleData } = require("../models/db");
 const { session } = require("../models/db"); // Import the session setup
-const { format, parseISO } = require('date-fns')
+const { format, parseISO } = require("date-fns");
 
 // Log a simple Post Request and data within
 async function logData(req, res) {
@@ -22,15 +21,16 @@ async function logPostReq(req, res) {
     const postReq = await req.body;
     console.log("postReq.nodes", postReq.nodes);
     for (const node of postReq.nodes) {
-      const {questionNumber} = node;
-      const {date} = node;
+      const { questionNumber } = node;
+      const { date } = node;
       const parsedDate = parseISO(date);
-      const formattedDate = format(parsedDate, "d'MMM'yyyy");
+      const formattedDate = format(parsedDate, "dMMMyyyy");
+      console.log(formattedDate);
       const answerText = node.answerText;
 
       const result = await session.run(
         `
-        CREATE (q:Question {questionNumber: $questionNumber, date: $formattedDate})
+        CREATE (q:Question {questionNumber: $questionNumber, date: $formattedDate, answerText: $answerText})
         CREATE (a:Answer {answerText: $answerText, date: $formattedDate})
         CREATE (q)-[:HAS_ANSWERED]->(a)
         `,
@@ -40,7 +40,6 @@ async function logPostReq(req, res) {
     res.status(200).send("Success!");
   } catch (error) {
     throw new Error(error);
-    res.status(500).send("Bad");
   }
 }
 

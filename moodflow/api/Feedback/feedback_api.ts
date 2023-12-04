@@ -2,6 +2,7 @@
 import axios from 'axios';
 
 const neo4jEndpoint = 'http://localhost:3001/postReq';
+const neo4jReceivepoint = 'http://localhost:3001/getReq';
 
 interface questionsInt {
   question: string;
@@ -24,5 +25,15 @@ export async function createNodes(questions: questionsInt[]) {
     console.log('Nodes and relationships created:', response.data);
   } catch (error) {
     console.error('Error creating nodes and relationships:', error);
+  }
+}
+
+export async function receiveNodes() {
+  try {
+    const response = await axios.get(neo4jReceivepoint);
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+    throw new Error('Something is bad');
   }
 }
