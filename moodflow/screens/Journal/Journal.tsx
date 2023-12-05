@@ -1,5 +1,5 @@
+import { useIsFocused } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
-import { useIsFocused } from "@react-navigation/native";
 import {
   FlatList,
   Text,
@@ -12,12 +12,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import styles from './styles';
 import JournalListItem from '../../components/JournalListItem/JournalListItem';
+import Logo from '../../components/Logo/Logo';
 import {
   getAllJournalsController,
   createJournalEntryController,
 } from '../../native-db/controllers/journal';
-import Logo from '../../components/Logo/Logo';
-
 
 interface Journal {
   body: string;
@@ -97,7 +96,10 @@ const Journal: React.FC = ({ navigation }) => {
               />
             </View>
             <View>
-              <Pressable onPress={() => saveEntry()} style={styles.buttonPrimary}>
+              <Pressable
+                onPress={() => saveEntry()}
+                style={styles.buttonPrimary}
+              >
                 <Text style={styles.buttonTextPrimary}>Save thought</Text>
               </Pressable>
               <Pressable
@@ -112,7 +114,19 @@ const Journal: React.FC = ({ navigation }) => {
         {journalEntries ? (
           <FlatList
             data={journalEntries}
-            renderItem={({ item }) => <Pressable onPress={() => navigation.navigate('JournalEntry', {entryId: item.id})}><JournalListItem journalEntries={journalEntries} setJournalEntries={setJournalEntries} journalItem={item} /></Pressable>}
+            renderItem={({ item }) => (
+              <Pressable
+                onPress={() =>
+                  navigation.navigate('JournalEntry', { entryId: item.id })
+                }
+              >
+                <JournalListItem
+                  journalEntries={journalEntries}
+                  setJournalEntries={setJournalEntries}
+                  journalItem={item}
+                />
+              </Pressable>
+            )}
           />
         ) : (
           <Text>No journal entries</Text>
