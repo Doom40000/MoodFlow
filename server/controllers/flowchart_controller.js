@@ -33,13 +33,12 @@ async function getNodesBasedOnDays(req, res) {
   try {
     const { day } = req.params;
     console.log(day);
-    const parsedDate = parse(day, "dMMMyyyy", new Date());
-    const formattedDateString = format(parsedDate, "dMMMyyyy");
+    console.log("Hey");
 
     const result = await session.run(`
    MATCH (n:Question)
-   WHERE n.date = '${formattedDateString}'
-   return n
+   WHERE n.date = '4Dec2023'
+   return n LIMIT 10
    `);
     const responseArray = [];
     result.records.map((node) => {

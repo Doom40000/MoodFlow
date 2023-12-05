@@ -12,5 +12,5 @@ const router = require("express").Router();
 router.get("/getReq/:day", getNodesBasedOnDays);
 router.post("/postReq", logPostReq);
 router.post("/checkLogin", checkLoginData);
-router.post("/checkRegisterData", checkRegister);
+router.post("/checkRegister", checkRegister);
 module.exports = router;

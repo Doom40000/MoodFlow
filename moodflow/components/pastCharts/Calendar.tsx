@@ -45,13 +45,13 @@
 
 // export default Calendar;
 
-
 import { Moment } from 'moment';
 import React from 'react';
 import { View, ViewStyle } from 'react-native';
 import CalendarPicker, {
   DateChangedCallback,
 } from 'react-native-calendar-picker';
+
 import DayChart from './DayChart';
 import { receiveNodes } from '../../api/Feedback/feedback_api';
 import styles from './CalendarStyles';
@@ -79,25 +79,9 @@ interface question {
 const Calendar = () => {
   const onDateChange: DateChangedCallback = async (date) => {
     // TODO type any to fix here (and add date parameter when controller fixed)
-    // Heyhey :) finalDate currently returns some weird values sometimes
 
-    // const dateString = formatDate(date);
-
-    console.log(formatDate(date));
-
-    const dateString = '4Dec2023';
-
-    const fetchChart = async () => {
-      const data = await fetch(
-        `http://localhost:3001/getReq/${dateString}`,
-      );
-      const parsedData = await data.json();
-      console.log('parsed Data: ', parsedData);
-      console.log('DATA: ', data)
-      return parsedData;
-    };
-    const charts = await fetchChart();
-
+    const dateString = formatDate(date);
+    const charts = receiveNodes(dateString);
     return <DayChart charts={charts} />;
   };
 
