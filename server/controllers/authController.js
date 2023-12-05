@@ -1,5 +1,6 @@
 const { session } = require("../models/db.js");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const checkLoginData = async (req, res) => {
   try {
@@ -22,7 +23,8 @@ const checkLoginData = async (req, res) => {
         }
 
         if (result) {
-          res.status(200).json({ message: "Login successful!" });
+          const token = jwt.sign({ username }, "secret", { expiresIn: "48h" });
+          res.status(200).json({ message: "Login successful!", token });
         } else {
           res.status(401).json({ message: "Invalid credentials!" });
         }
