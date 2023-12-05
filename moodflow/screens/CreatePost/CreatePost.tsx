@@ -10,11 +10,13 @@ import {
 
 import styles from './styles';
 import Logo from '../../components/Logo/Logo';
+import { postMessage } from '../../api/Auth/tokenRetrieval';
 
 const CreatePost: React.FC = () => {
   const [postText, setPostText] = useState('');
 
   const handleSubmitPost = () => {
+    postMessage(postText);
     console.log(`Submitted: ${postText}`);
   };
 

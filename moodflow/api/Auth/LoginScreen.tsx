@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Button, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+// Example LoginScreen
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

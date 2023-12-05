@@ -18,6 +18,7 @@ import Settings from './screens/Settings/Settings';
 import { store, persistor } from './store/store';
 import CalendarPage from './screens/Calendar/Calendar';
 import LoginScreen from './api/Auth/LoginScreen';
+import Register from './api/Auth/RegisterScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -61,7 +62,7 @@ export default function App() {
               />
               <Tab.Screen
                 name="Settings"
-                component={LoginScreen}
+                component={Register}
                 options={{
                   tabBarIcon: ({ color, size }) => (
                     <Feather name="settings" size={size} color={color} />
