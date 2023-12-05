@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 
 import styles from './styles';
 import Logo from '../../components/Logo/Logo';
+
 const Home = () => {
   const [quote, setQuote] = useState('');
 

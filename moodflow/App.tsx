@@ -1,9 +1,10 @@
 import { Feather, Entypo } from '@expo/vector-icons';
+
 import 'react-native-gesture-handler';
 import {
-  BottomTabNavigationOptions,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
@@ -24,7 +25,7 @@ import Register from './api/Auth/RegisterScreen';
 
 const Tab = createBottomTabNavigator();
 
-const CustomScreenOptions: BottomTabNavigationOptions = {
+const CustomScreenOptions = {
   headerShown: false,
   tabBarStyle: {
     width: '75%',
@@ -64,7 +65,7 @@ export default function App() {
               />
               <Tab.Screen
                 name="Settings"
-                component={Register}
+                component={Settings}
                 options={{
                   tabBarIcon: ({ color, size }) => (
                     <Feather name="settings" size={size} color={color} />

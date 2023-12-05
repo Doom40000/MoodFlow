@@ -7,6 +7,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
+import { receiveNodes } from '../../api/Feedback/feedback_api';
 import DayQuestion from '../../components/FlowChartComponents/DayQuestion';
 import DietQuestion from '../../components/FlowChartComponents/DietQuestion';
 import ExerciseQuestion from '../../components/FlowChartComponents/ExerciseQuestion';
@@ -23,6 +24,7 @@ import styles from '../Home/styles';
 // When you push the button, you record the result and set the state with the next index in the array.
 // Components = [1,2,3,4,5,6,7]
 
+
 const flowChartQuestions = [
   Chart,
   DayQuestion,
@@ -34,6 +36,7 @@ const flowChartQuestions = [
   PositivityQuestion,
   Feedback,
 ];
+
 
 type FormButtonHandlerType = () => void;
 export interface QuestionProps {
@@ -52,6 +55,7 @@ const FlowChart = () => {
       transform: [{ translateY: withTiming(interpolation, { duration: 800 }) }],
     };
   });
+
 
   //! Handle reaching end of questions
   const formButtonHandler = () => {
