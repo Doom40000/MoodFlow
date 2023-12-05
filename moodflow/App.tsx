@@ -12,9 +12,9 @@ import { View, StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import HomeStack from './components/HomeStack/HomeStack';
 import JournalStack from './components/JournalStack/JournalStack';
 import FlowChart from './screens/FlowChart/FlowChart';
-import Home from './screens/Home/Home';
 import Resources from './screens/Resources/Resources';
 import Settings from './screens/Settings/Settings';
 import { store, persistor } from './store/store';
@@ -46,8 +46,8 @@ export default function App() {
           <NavigationContainer>
             <Tab.Navigator screenOptions={CustomScreenOptions}>
               <Tab.Screen
-                name="Home"
-                component={Home}
+                name="HomeStack"
+                component={HomeStack}
                 options={{
                   tabBarIcon: ({ color, size }) => (
                     <Feather name="home" size={size} color={color} />

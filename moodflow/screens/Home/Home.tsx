@@ -1,13 +1,26 @@
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+
+import { Text, View, TouchableOpacity } from 'react-native';
+
 
 import styles from './styles';
+import { RootStackParamList } from '../../components/HomeStack/HomeStack';
 import Logo from '../../components/Logo/Logo';
 
-const Home = () => {
-  const [quote, setQuote] = useState('');
 
-  const url = 'https://zenquotes.io/api/quotes';
+type createPostProp = StackNavigationProp<RootStackParamList, 'CreatePost'>;
+
+const Home: React.FC = () => {
+  const [quote, setQuote] = useState('');
+  const navigation = useNavigation<createPostProp>();
+  React.useEffect(() => {
+    navigation.setOptions({ headerShown: false });
+  }, [navigation]);
+
+  const url = 'https://zenquotes.io/api/today';
 
   // Doesn't work in webview, only on native device (CORS Policy)
   useEffect(() => {
@@ -23,6 +36,10 @@ const Home = () => {
     fetchData();
   }, []);
 
+  const handleSocialIconPress = () => {
+    navigation.navigate('CreatePost');
+  };
+
   return (
     <View style={styles.container}>
       <Logo />
@@ -33,6 +50,13 @@ const Home = () => {
           </Text>
         </View>
         <Text style={styles.quoteText}>{quote}</Text>
+
+      </View>
+      <View style={styles.iconContainer}>
+        <TouchableOpacity onPress={handleSocialIconPress}>
+          <Ionicons name="people" size={64} color="white" />
+          <Text style={styles.iconText}>Social</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
