@@ -26,7 +26,6 @@ const Calendar = () => {
 
   const onDateChange: DateChangedCallback  = (date) => {
     const dateString = formatDate(date)
-    // TODO type any to fix here (and add date parameter when controller fixed)
     const charts = receiveNodes(dateString);
 
     return <DayChart charts={charts}/>

@@ -24,6 +24,7 @@ import styles from '../Home/styles';
 // When you push the button, you record the result and set the state with the next index in the array.
 // Components = [1,2,3,4,5,6,7]
 
+
 const flowChartQuestions = [
   Chart,
   DayQuestion,
@@ -35,6 +36,7 @@ const flowChartQuestions = [
   PositivityQuestion,
   Feedback,
 ];
+
 
 type FormButtonHandlerType = () => void;
 export interface QuestionProps {
@@ -54,7 +56,6 @@ const FlowChart = () => {
     };
   });
 
-  receiveNodes();
 
   //! Handle reaching end of questions
   const formButtonHandler = () => {
