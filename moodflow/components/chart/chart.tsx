@@ -11,7 +11,11 @@ const habitsList: string[] = [
   'Diet',
   'Staying hydrated',
   'Exercise',
+  'Activity'
 ];
+
+const checkedItems: string[] = [''];
+
 
 const Chart = ({ formButtonHandler }: QuestionProps) => {
   // send checkedItems to db to use for personalised flowChart.
@@ -45,4 +49,4 @@ const Chart = ({ formButtonHandler }: QuestionProps) => {
   );
 };
 
-export default Chart;
+export default  Chart ;

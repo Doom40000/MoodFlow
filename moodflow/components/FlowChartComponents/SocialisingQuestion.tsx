@@ -10,14 +10,9 @@ import type { RootState } from '../../store/store';
 import { store } from '../../store/store';
 
 const SocialisingQuestion = ({ formButtonHandler }: QuestionProps) => {
-  // const [answer, setAnswer] = useState('');
   const count = useSelector((state: RootState) => state.question2.answer);
   const dispatch = useDispatch();
 
-  // const onPress = (value: string) => {
-  //   setAnswer(value);
-  //   formButtonHandler();
-  // };
   return (
     <View style={styles.container}>
       <Text style={styles.questionText}>
