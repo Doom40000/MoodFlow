@@ -22,7 +22,7 @@ const getAllJournals = async (): Promise<Journal[]> => {
   });
 };
 
-const getJournalById = async (id: number): Promise<Journal[]> => {
+const getJournalById = async (id: number): Promise<Journal[] | []> => {
   return new Promise((resolve, reject) => {
     db.transaction(async (tx) => {
       tx.executeSql(

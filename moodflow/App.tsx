@@ -17,6 +17,7 @@ import FlowChart from './screens/FlowChart/FlowChart';
 import Home from './screens/Home/Home';
 import Resources from './screens/Resources/Resources';
 import Settings from './screens/Settings/Settings';
+import SocialFeed from './screens/SocialFeed/SocialFeed';
 import { store, persistor } from './store/store';
 
 const Tab = createBottomTabNavigator();
