@@ -85,15 +85,15 @@ const Calendar = () => {
 
     console.log(formatDate(date));
 
-    const dateString = formatDate(date);
+    const dateString = '4Dec2023';
 
     const fetchChart = async () => {
       const data = await fetch(
-        `http://192.168.55.83:3001/getReq/${dateString}`,
+        `http://localhost:3001/getReq/${dateString}`,
       );
       const parsedData = await data.json();
       console.log('parsed Data: ', parsedData);
-      console.log('DATA: ', data.json())
+      console.log('DATA: ', data)
       return parsedData;
     };
     const charts = await fetchChart();

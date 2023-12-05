@@ -1,8 +1,12 @@
 import { getUser, createUser } from '../models/User';
 
 const getUserController = async () => {
-  const user = await getUser();
-  return user;
+  try {
+    const user = await getUser();
+    return user;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const createUserController = async (
@@ -10,8 +14,12 @@ const createUserController = async (
   password: string,
   dob: string,
 ) => {
-  const user = await createUser(username, password, dob);
-  return user;
+  try {
+    const user = await createUser(username, password, dob);
+    return user;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export { getUserController, createUserController };
