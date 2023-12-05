@@ -9,14 +9,8 @@ import { yes, no } from '../../store/question4Slice';
 import type { RootState } from '../../store/store';
 
 const SleepQuestion = ({ formButtonHandler }: QuestionProps) => {
-  // const [answer, setAnswer] = useState('');
   const count = useSelector((state: RootState) => state.question2.answer);
   const dispatch = useDispatch();
-
-  // const onPress = (value: string) => {
-  //   setAnswer(value);
-  //   formButtonHandler();
-  // };
 
   return (
     <View style={styles.container}>

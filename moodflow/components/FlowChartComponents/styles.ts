@@ -27,6 +27,26 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     marginBottom: 25,
   },
+  inp: {
+    // height: 40,
+    // width: 100,
+    // margin: 12,
+    // borderWidth: 1,
+    // padding: 10,
+    // borderColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: '#ffff',
+    borderStyle: 'solid',
+    borderWidth: 7,
+    borderRadius: 10,
+    margin: 6,
+    padding: 10,
+    height: '20%',
+    width: '70%',
+    color: 'white',
+    fontSize: 20
+}
 });
 
 export default styles;

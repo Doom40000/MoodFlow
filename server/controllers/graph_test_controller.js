@@ -1,4 +1,5 @@
 const { session } = require("../models/db"); // Import the session setup
+const { format, parse } = require("date-fns");
 
 // Example controller function using the session and returning the first 10 nodes
 async function getNodes(req, res) {
@@ -58,9 +59,33 @@ const getAllNodesWithProperties = async (req, res) => {
   }
 };
 
+const getNodesBasedOnDays = async (req, res) => {
+  try {
+    const { day } = req.params;
+    console.log(day);
+    const parsedDate = parse(day, "dMMMyyyy", new Date());
+    const formattedDateString = format(parsedDate, "dMMMyyyy");
+
+    const result = await session.run(`
+   MATCH (n:Question)
+   WHERE n.date = '${formattedDateString}'
+   return n
+   `);
+    const responseArray = [];
+    result.records.map((node) => {
+      console.log(node._fields[0].properties);
+      responseArray.push(node._fields[0].properties);
+    });
+    res.json(responseArray);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   getNodes,
   createPerson,
   createPersonWithMood,
   getAllNodesWithProperties,
+  getNodesBasedOnDays,
 };

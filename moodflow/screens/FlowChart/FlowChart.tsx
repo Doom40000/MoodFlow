@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, Dimensions } from 'react-native';
+import React, { useState } from 'react';
+import { View } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -7,11 +7,15 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
+import { receiveNodes } from '../../api/Feedback/feedback_api';
 import DayQuestion from '../../components/FlowChartComponents/DayQuestion';
 import DietQuestion from '../../components/FlowChartComponents/DietQuestion';
 import ExerciseQuestion from '../../components/FlowChartComponents/ExerciseQuestion';
 import SleepQuestion from '../../components/FlowChartComponents/SleepQuestion';
 import SocialisingQuestion from '../../components/FlowChartComponents/SocialisingQuestion';
+import ActivityQuestion from '../../components/FlowChartComponents/ActivityQuestion';
+import PositivityQuestion from '../../components/FlowChartComponents/Positivity';
+
 import Logo from '../../components/Logo/Logo';
 import Chart from '../../components/chart/chart';
 import Feedback from '../Feedback/Feedback';
@@ -20,6 +24,7 @@ import styles from '../Home/styles';
 // When you push the button, you record the result and set the state with the next index in the array.
 // Components = [1,2,3,4,5,6,7]
 
+
 const flowChartQuestions = [
   Chart,
   DayQuestion,
@@ -27,19 +32,18 @@ const flowChartQuestions = [
   ExerciseQuestion,
   SleepQuestion,
   SocialisingQuestion,
+  ActivityQuestion,
+  PositivityQuestion,
   Feedback,
 ];
+
 
 type FormButtonHandlerType = () => void;
 export interface QuestionProps {
   formButtonHandler: FormButtonHandlerType;
 }
 
-const logoSrc = require('../../assets/MoodFlowLogo.png');
-const goBackArrow = require('../../assets/expand_more_FILL0_wght400_GRAD0_opsz24.png');
-
 const FlowChart = () => {
-  const { height, width } = Dimensions.get('window');
   const formOnePosition = useSharedValue(1);
   const [question, setQuestion] = useState(0);
 
@@ -51,6 +55,7 @@ const FlowChart = () => {
       transform: [{ translateY: withTiming(interpolation, { duration: 800 }) }],
     };
   });
+
 
   //! Handle reaching end of questions
   const formButtonHandler = () => {
