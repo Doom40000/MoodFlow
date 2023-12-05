@@ -1,20 +1,6 @@
 const { session } = require("../models/db"); // Import the session setup
 const { format, parseISO } = require("date-fns");
 
-// Log a simple Post Request and data within
-async function logData(req, res) {
-  try {
-    const phoneData = req.body;
-    res.status(200).send(`${phoneData.name}`);
-    console.log(phoneData);
-    console.log(phoneData.name);
-    console.log(phoneData.mood);
-  } catch (err) {
-    res.status(401).send("Something went very wrong!");
-    console.error(err);
-  }
-}
-
 // Store the daily feedback as nodes
 async function logPostReq(req, res) {
   try {
@@ -43,6 +29,30 @@ async function logPostReq(req, res) {
   }
 }
 
+async function getNodesBasedOnDays(req, res) {
+  try {
+    const { day } = req.params;
+    console.log(day);
+    const parsedDate = parse(day, "dMMMyyyy", new Date());
+    const formattedDateString = format(parsedDate, "dMMMyyyy");
+
+    const result = await session.run(`
+   MATCH (n:Question)
+   WHERE n.date = '${formattedDateString}'
+   return n
+   `);
+    const responseArray = [];
+    result.records.map((node) => {
+      console.log(node._fields[0].properties);
+      responseArray.push(node._fields[0].properties);
+    });
+    res.json(responseArray);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   logPostReq,
+  getNodesBasedOnDays,
 };
