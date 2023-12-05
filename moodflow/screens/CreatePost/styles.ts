@@ -10,9 +10,6 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     flex: 0.5,
-    borderColor: 'red',
-    borderStyle: 'solid',
-    borderWidth: 1,
   },
   inputContainer: {
     flex: 10,
@@ -20,14 +17,33 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
-    borderColor: 'red',
-    borderStyle: 'solid',
-    borderWidth: 1,
   },
   promptText: {
     color: 'white',
     fontSize: 28,
     marginVertical: 25,
+  },
+  postInput: {
+    justifyContent: 'center',
+    alignContent: 'center',
+    textAlign: 'center',
+    width: '85%',
+    borderColor: 'white',
+    borderStyle: 'solid',
+    borderWidth: 5,
+    marginBottom: 15,
+  },
+  submitButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: 'white',
+    borderStyle: 'solid',
+    borderWidth: 5,
+    padding: 5,
+  },
+  submitText: {
+    color: 'white',
+    fontSize: 32,
   },
 });
 
