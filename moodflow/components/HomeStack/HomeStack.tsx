@@ -6,7 +6,7 @@ import Home from '../../screens/Home/Home';
 
 export type RootStackParamList = {
   Home: undefined;
-  'Create Post': undefined;
+  CreatePost: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -15,7 +15,15 @@ const HomeStack: React.FC = () => {
   return (
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Create Post" component={CreatePost} />
+      <Stack.Screen
+        name="CreatePost"
+        component={CreatePost}
+        options={{
+          title: 'Create Post',
+          headerTitleStyle: { color: '#1EAED7' },
+          headerTintColor: '#1EAED7',
+        }}
+      />
     </Stack.Navigator>
   );
 };

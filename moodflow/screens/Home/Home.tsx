@@ -8,7 +8,7 @@ import styles from './styles';
 import { RootStackParamList } from '../../components/HomeStack/HomeStack';
 import Logo from '../../components/Logo/Logo';
 
-type createPostProp = StackNavigationProp<RootStackParamList, 'Create Post'>;
+type createPostProp = StackNavigationProp<RootStackParamList, 'CreatePost'>;
 
 const Home: React.FC = () => {
   const [quote, setQuote] = useState('');
@@ -34,7 +34,7 @@ const Home: React.FC = () => {
   }, []);
 
   const handleSocialIconPress = () => {
-    navigation.navigate('Create Post');
+    navigation.navigate('CreatePost');
   };
 
   return (
