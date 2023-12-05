@@ -17,6 +17,7 @@ import JournalStack from './components/JournalStack/JournalStack';
 import FlowChart from './screens/FlowChart/FlowChart';
 import Resources from './screens/Resources/Resources';
 import Settings from './screens/Settings/Settings';
+import SocialFeed from './screens/SocialFeed/SocialFeed';
 import { store, persistor } from './store/store';
 import CalendarPage from './screens/Calendar/Calendar';
 import TestApp from './api/Auth/AppTest';
@@ -64,8 +65,8 @@ export default function App() {
                 }}
               />
               <Tab.Screen
-                name="Settings"
-                component={Settings}
+                name="Feed"
+                component={SocialFeed}
                 options={{
                   tabBarIcon: ({ color, size }) => (
                     <Feather name="settings" size={size} color={color} />

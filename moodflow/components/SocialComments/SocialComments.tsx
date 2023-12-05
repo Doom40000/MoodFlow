@@ -1,9 +1,13 @@
-import React from 'react';
-import { Modal, Pressable, Text, View, FlatList, TextInput } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import React, { useState } from 'react';
+import { Keyboard, Modal, Pressable, Text, View, FlatList, TextInput } from 'react-native';
 
 import CommentCard from '../CommentCard/CommentCard';
 import styles from './styles';
+
+const user = {
+  id: 1,
+  username: 'Mike'
+}
 
 interface Comments {
   commentId: number
@@ -29,9 +33,25 @@ interface SocialCommentProps {
 }
 
 const SocialComments: React.FC<SocialCommentProps> = ({ selectedPost, modalVisible, setModalVisible }) => {
+  const [ comments, setComments ] = useState<Comments[]>(selectedPost.comments);
+  const [ commentForm, setCommentForm ] = useState<string>('');
 
   const handleModalClose = () => {
-    setModalVisible(!modalVisible)
+    setModalVisible(!modalVisible);
+  }
+
+  const handleCommentSubmit = () => {
+    const commentObj = {
+      commentId: comments.length + 1,
+      userId: user.id,
+      username: user.username,
+      body: commentForm,
+      likes: []
+    }
+    setComments([...comments, commentObj]);
+    setCommentForm('');
+    Keyboard.dismiss();
+    //TODO: Add comment to db here
   }
 
   return (
@@ -52,23 +72,28 @@ const SocialComments: React.FC<SocialCommentProps> = ({ selectedPost, modalVisib
           
           <Text style={styles.bigText}>{selectedPost.body}</Text>
         </View>
-        <View>
+        <View style={styles.commentInputContainer}>
+          <Text style={styles.smallText}>Add a comment</Text>
           <TextInput
             editable
             multiline
+            onChangeText={(text) => setCommentForm(text)}
+            defaultValue={commentForm}
             style={styles.bigInput}
            />
+          <Pressable onPressIn={() => handleCommentSubmit()} style={styles.buttonPrimary} onPress={() => console.log('PRESSED')}>
+            <Text style={styles.buttonTextPrimary}>Post Comment</Text>
+          </Pressable>
         </View>
-        <View>
+        <View style={styles.commentsContainer}>
           <FlatList
-            data={selectedPost.comments}
+            data={comments}
             renderItem={({ item }) => <CommentCard commentItem={item} />}
           />
         </View>
-        
         <View>
-          <Pressable onPress={() => handleModalClose()}>
-            <Text>Go back</Text>
+          <Pressable style={styles.buttonSecondary} onPress={() => handleModalClose()}>
+            <Text style={styles.buttonTextSecondary}>Go Back</Text>
           </Pressable>
         </View>
       </View>

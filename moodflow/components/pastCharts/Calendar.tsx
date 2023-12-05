@@ -89,7 +89,7 @@ const Calendar = () => {
 
     const fetchChart = async () => {
       const data = await fetch(
-        `http://localhost:3001/getReq/${dateString}`,
+        `http://90.202.53.189:3001/getReq/${dateString}`,
       );
       const parsedData = await data.json();
       console.log('parsed Data: ', parsedData);

@@ -9,6 +9,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 16,
   },
+  commentsContainer: {
+    flex: 2
+  },  
   modalContainer: {
     backgroundColor: '#1FADD7',
     flex: 1
@@ -29,6 +32,12 @@ const styles = StyleSheet.create({
     marginBottom: 1,
     marginRight: 1
   },
+  smallText: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    opacity: 0.9,
+    marginBottom: 8,
+  },
   mediumText: {
     color: '#FFFFFF',
     fontSize: 18,
@@ -45,6 +54,11 @@ const styles = StyleSheet.create({
     borderBottomColor: '#93DBF0',
     paddingHorizontal: 10,
   },
+  commentInputContainer: {
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    paddingBottom: 10,
+  },
   bigInput: {
     padding: 10,
     minHeight: 80,
@@ -53,6 +67,34 @@ const styles = StyleSheet.create({
     borderColor: '#FFFFFF',
     color: '#FFFFFF',
     textAlignVertical: 'top',
+  },
+  buttonPrimary: {
+    borderRadius: 6,
+    backgroundColor: '#FFFFFF',
+    alignContent: 'center',
+    padding: 20,
+    marginVertical: 16,
+    justifyContent: 'center',
+    elevation: 2,
+  },
+  buttonTextPrimary: {
+    alignSelf: 'center',
+    fontSize: 18,
+    fontWeight: '500',
+    color: '#1FADD7'
+  },
+  buttonSecondary: {
+    borderRadius: 6,
+    borderWidth: 2,
+    borderColor: '#FFFFFF',
+    padding: 20,
+    elevation: 2,
+    backgroundColor: '#1FADD7',
+  },
+  buttonTextSecondary: {
+    alignSelf: 'center',
+    fontSize: 18,
+    color: '#FFFFFF'
   },
 });
 

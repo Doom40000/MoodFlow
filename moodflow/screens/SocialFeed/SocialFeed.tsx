@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Pressable, Text, View, FlatList } from 'react-native';
+import { Text, View, FlatList } from 'react-native';
 
 import styles from './styles';
 import Logo from '../../components/Logo/Logo';
@@ -88,7 +88,7 @@ const SocialFeed = () => {
         {posts.length ? (
           <FlatList
             data={posts}
-            renderItem={({ item }) => <SocialPost modalVisible={modalVisible} setModalVisible={setModalVisible} setSelectedPost={setSelectedPost} postItem={item} />}
+            renderItem={({ item }) => <SocialPost modalVisible={modalVisible} setModalVisible={setModalVisible} selectedPost={selectedPost} setSelectedPost={setSelectedPost} postItem={item} />}
           />
         ) : (
           <Text>No posts available</Text>

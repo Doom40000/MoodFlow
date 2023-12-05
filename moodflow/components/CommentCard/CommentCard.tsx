@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Pressable, Text, View, FlatList } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 import styles from './styles';
@@ -18,14 +18,14 @@ interface CommentCardProps {
 
 const CommentCard: React.FC<CommentCardProps> = ({ commentItem }) => {
   return (
-    <View>
-      <View>
-        <Text>{commentItem.username}</Text>
-        <Text>{commentItem.body}</Text>
+    <View style={styles.commentContainer}>
+      <View style={styles.commentProfile}>
+        <View style={styles.profileIcon}>
+          <Text style={styles.profileIconText}>{commentItem.username[0]}</Text>
+        </View>
+        <Text style={styles.mediumText}>{commentItem.username}</Text>
       </View>
-      <View>
-        <Text>{commentItem.likes.length}</Text>
-      </View>
+      <Text style={styles.bigText}>{commentItem.body}</Text>
     </View>
   )
 };
