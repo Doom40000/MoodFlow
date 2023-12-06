@@ -23,7 +23,6 @@ export const postMessage = async (message: string) => {
       },
       body: JSON.stringify({ message }),
     });
-    console.log(response);
   } catch (error) {
     console.log(error);
   }

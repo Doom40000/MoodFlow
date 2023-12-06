@@ -13,7 +13,7 @@ const postNewMessage = async (user, message) => {
     );
   } catch (error) {
     console.error("Could not create post.");
-    throw new Error(error);
+    throw new Error();
   }
 };
 

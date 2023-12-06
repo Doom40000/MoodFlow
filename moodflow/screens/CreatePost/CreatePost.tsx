@@ -9,15 +9,15 @@ import {
 } from 'react-native';
 
 import styles from './styles';
-import Logo from '../../components/Logo/Logo';
 import { postMessage } from '../../api/Auth/tokenRetrieval';
+import Logo from '../../components/Logo/Logo';
 
 const CreatePost: React.FC = () => {
   const [postText, setPostText] = useState('');
 
-  const handleSubmitPost = () => {
-    postMessage(postText);
-    console.log(`Submitted: ${postText}`);
+  const handleSubmitPost = async () => {
+    await postMessage(postText);
+    setPostText('');
   };
 
   const updatePostText = (

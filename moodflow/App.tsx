@@ -17,16 +17,10 @@ import Register from './api/Auth/RegisterScreen';
 import HomeDrawerNavigator from './components/HomeStack/HomeStack';
 import JournalStack from './components/JournalStack/JournalStack';
 import Logo from './components/Logo/Logo';
-// TODO: Use Calendar Page
-// import CalendarPage from './screens/Calendar/Calendar';
+import CalendarPage from './screens/Calendar/Calendar';
 import FlowChart from './screens/FlowChart/FlowChart';
-import Resources from './screens/Resources/Resources';
-// TODO: Use Settings
-// import Settings from './screens/Settings/Settings';
 import SocialFeed from './screens/SocialFeed/SocialFeed';
 import { store, persistor } from './store/store';
-import Calendar from './components/pastCharts/Calendar';
-import CalendarPage from './screens/Calendar/Calendar';
 
 const Tab = createBottomTabNavigator();
 
