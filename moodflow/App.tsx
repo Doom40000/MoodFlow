@@ -1,14 +1,18 @@
 import { Feather, Entypo } from '@expo/vector-icons';
 import 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
+import { err } from 'react-native-svg/lib/typescript/xml';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import Logo from './components/Logo/Logo';
 import LoginScreen from './api/Auth/LoginScreen';
 import Register from './api/Auth/RegisterScreen';
 import HomeStack from './components/HomeStack/HomeStack';
@@ -20,6 +24,13 @@ import Settings from './screens/Settings/Settings';
 import { store, persistor } from './store/store';
 
 const Tab = createBottomTabNavigator();
+
+export type LoginStackParamList = {
+  LoginScreen: undefined;
+  Register: undefined;
+};
+
+const Stack = createStackNavigator<LoginStackParamList>;
 
 const CustomScreenOptions: BottomTabNavigationOptions = {
   headerShown: false,
@@ -35,11 +46,28 @@ const CustomScreenOptions: BottomTabNavigationOptions = {
 };
 
 export default function App() {
+  const [isLoggedin, setIsLoggedIn] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const checkAuthentication = async () => {
+      try {
+        const token = await AsyncStorage.getItem('jwtToken');
+        setIsLoggedIn(!!token);
+      } catch (error) {
+        console.log(`Authentication Failure: ${error}`);
+      }
+    };
+  });
+
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <View style={styles.container}>
           <NavigationContainer>
+            {isLoggedin === null ? (
+              <Logo />
+
+            )}
             <Tab.Navigator screenOptions={CustomScreenOptions}>
               <Tab.Screen
                 name="HomeStack"
@@ -94,6 +122,7 @@ export default function App() {
     </Provider>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
