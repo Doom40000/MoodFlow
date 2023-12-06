@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import styles from './styles';
@@ -42,16 +42,22 @@ const Register = () => {
       <TextInput
         style={styles.inputStyle}
         placeholder="Email"
+        placeholderTextColor="white"
+        cursorColor="white"
         onChangeText={setEmail}
       />
       <TextInput
         style={styles.inputStyle}
         placeholder="Password"
+        placeholderTextColor="white"
+        cursorColor="white"
         onChangeText={setPassword}
       />
       <TextInput
         style={styles.inputStyle}
         placeholder="Username"
+        placeholderTextColor="white"
+        cursorColor="white"
         onChangeText={setUsername}
       />
       <TouchableOpacity style={styles.loginButtons} onPress={handleRegister}>
