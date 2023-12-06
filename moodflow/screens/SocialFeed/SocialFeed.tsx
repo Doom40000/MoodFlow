@@ -66,33 +66,48 @@ interface Post {
   comments: Comments[];
 }
 
+interface FetchResponse {
+  message: string,
+  user: string
+}
+
 const SocialFeed = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [selectedPost, setSelectedPost] = useState<Post | {}>({});
   const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const [response, setResponse] = useState({});
+  const [response, setResponse] = useState<FetchResponse[]>([]);
 
   useEffect(() => {
-    // ApiCall start
     const fetchData = async () => {
       try {
-        const response = await fetch('http://192.168.188.42:3001/receivePosts');
+        const response = await fetch('http://192.168.0.82:3001/receivePosts');
 
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-
+        
         const data = await response.json();
-        console.log('Response data:', data);
         setResponse(data);
       } catch (error) {
-        console.error('Error: ', error);
+        throw new Error(error);
       }
     };
 
     fetchData();
-    // ApiCall end -> Response data: [{"message": "Hello from me!", "user": "Dennis"}]
-    setPosts(mockData);
+
+    const fetchedMessages = response.map((res) => {
+      const messageObj: Post = {
+        postId: 5,
+        userId: 4,
+        username: res.user,
+        body: res.message,
+        likes: [1, 3, 2],
+        comments: [],
+      }
+      return messageObj;
+    });
+    console.log(fetchedMessages);
+    setPosts(fetchedMessages);
   }, []);
 
   return (
