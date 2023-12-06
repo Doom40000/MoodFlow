@@ -13,10 +13,10 @@ const Stack = createStackNavigator<JournalStackParamList>();
 
 const JournalStack = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name='Journals' component={Journal} />
-      <Stack.Screen name='JournalEntry' component={JournalEntry} />
-    </Stack.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen name='Journals' component={Journal} />
+        <Stack.Screen name='JournalEntry' component={JournalEntry} />
+      </Stack.Navigator>
   )
 };
 

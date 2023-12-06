@@ -58,7 +58,7 @@ const Journal: React.FC = ({ navigation }) => {
       <Logo />
       <View style={styles.contentContainer}>
         <View style={styles.headerContainer}>
-          <Text style={styles.bigHeading}>Your Journal</Text>
+          <Text testID='journal-heading' style={styles.bigHeading}>Your Journal</Text>
           <Pressable
             onPress={() => setModalVisible(true)}
             style={styles.noteButton}

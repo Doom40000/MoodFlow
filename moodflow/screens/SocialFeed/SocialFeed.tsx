@@ -75,7 +75,6 @@ const SocialFeed = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [selectedPost, setSelectedPost] = useState<Post | {}>({});
   const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const [response, setResponse] = useState<FetchResponse[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -85,9 +84,20 @@ const SocialFeed = () => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        
         const data = await response.json();
-        setResponse(data);
+
+        const fetchedMessages = data.map((res: FetchResponse) => {
+          const messageObj: Post = {
+            postId: 5,
+            userId: 4,
+            username: res.user,
+            body: res.message,
+            likes: [1, 3, 2],
+            comments: [],
+          }
+          return messageObj;
+        });
+        setPosts(fetchedMessages);
       } catch (error) {
         throw new Error(error);
       }
@@ -95,19 +105,6 @@ const SocialFeed = () => {
 
     fetchData();
 
-    const fetchedMessages = response.map((res) => {
-      const messageObj: Post = {
-        postId: 5,
-        userId: 4,
-        username: res.user,
-        body: res.message,
-        likes: [1, 3, 2],
-        comments: [],
-      }
-      return messageObj;
-    });
-    console.log(fetchedMessages);
-    setPosts(fetchedMessages);
   }, []);
 
   return (
