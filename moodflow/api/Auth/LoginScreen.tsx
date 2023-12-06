@@ -1,11 +1,14 @@
 /* eslint-disable react/jsx-boolean-value */
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
-import { Button, TextInput } from 'react-native';
+import { Text, TextInput, View, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import styles from './styles';
+import Logo from '../../components/Logo/Logo';
+
 // Example LoginScreen
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -41,14 +44,44 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView>
-      <TextInput placeholder="Username" onChangeText={setUsername} />
+    <SafeAreaView style={styles.container}>
+      <Logo />
       <TextInput
+        style={styles.inputStyle}
+        placeholder="Username"
+        placeholderTextColor="white"
+        cursorColor="white"
+        onChangeText={setUsername}
+      />
+      <TextInput
+        style={styles.inputStyle}
         placeholder="Password"
+        placeholderTextColor="white"
+        cursorColor="white"
         secureTextEntry={true}
         onChangeText={setPassword}
       />
-      <Button title="Login" onPress={handleLogin} />
+      <View style={styles.buttonSpacing}>
+        <TouchableOpacity style={styles.loginButtons} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.buttonSpacing}>
+        <TouchableOpacity
+          style={styles.loginButtons}
+          onPress={() => console.log('Pressed')}
+        >
+          <Text style={styles.buttonText}>Forgotten Password</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.buttonSpacing}>
+        <TouchableOpacity
+          style={styles.loginButtons}
+          onPress={() => console.log('Pressed')}
+        >
+          <Text style={styles.buttonText}>Register</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };

@@ -47,6 +47,7 @@ const CustomScreenOptions: BottomTabNavigationOptions = {
 
 export default function App() {
   const [isLoggedin, setIsLoggedIn] = useState<boolean | null>(null);
+  // const [isLoggedin, setIsLoggedIn] = useState<boolean | null>(null);
 
   useEffect(() => {
     const checkAuthentication = async () => {
