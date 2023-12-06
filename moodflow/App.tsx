@@ -12,11 +12,11 @@ import { err } from 'react-native-svg/lib/typescript/xml';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import Logo from './components/Logo/Logo';
 import LoginScreen from './api/Auth/LoginScreen';
 import Register from './api/Auth/RegisterScreen';
 import HomeStack from './components/HomeStack/HomeStack';
 import JournalStack from './components/JournalStack/JournalStack';
+import Logo from './components/Logo/Logo';
 import CalendarPage from './screens/Calendar/Calendar';
 import FlowChart from './screens/FlowChart/FlowChart';
 import Resources from './screens/Resources/Resources';
@@ -30,7 +30,7 @@ export type LoginStackParamList = {
   Register: undefined;
 };
 
-const Stack = createStackNavigator<LoginStackParamList>;
+const Stack = createStackNavigator<LoginStackParamList>();
 
 const CustomScreenOptions: BottomTabNavigationOptions = {
   headerShown: false,
@@ -57,7 +57,8 @@ export default function App() {
         console.log(`Authentication Failure: ${error}`);
       }
     };
-  });
+    checkAuthentication();
+  }, []);
 
   return (
     <Provider store={store}>
@@ -66,55 +67,75 @@ export default function App() {
           <NavigationContainer>
             {isLoggedin === null ? (
               <Logo />
-
+            ) : isLoggedin ? (
+              <Tab.Navigator screenOptions={CustomScreenOptions}>
+                <Tab.Screen
+                  name="HomeStack"
+                  component={HomeStack}
+                  options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <Feather name="home" size={size} color={color} />
+                    ),
+                  }}
+                />
+                <Tab.Screen
+                  name="FlowChart"
+                  component={FlowChart}
+                  options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <Entypo name="flow-tree" size={size} color={color} />
+                    ),
+                  }}
+                />
+                <Tab.Screen
+                  name="Settings"
+                  component={Register}
+                  options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <Feather name="settings" size={size} color={color} />
+                    ),
+                  }}
+                />
+                <Tab.Screen
+                  name="Resources"
+                  component={Resources}
+                  options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <Feather name="settings" size={size} color={color} />
+                    ),
+                  }}
+                />
+                <Tab.Screen
+                  name="Journal"
+                  component={JournalStack}
+                  options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <Feather name="pen-tool" size={size} color={color} />
+                    ),
+                  }}
+                />
+              </Tab.Navigator>
+            ) : (
+              <Stack.Navigator initialRouteName="LoginScreen">
+                <Stack.Screen
+                  name="LoginScreen"
+                  component={LoginScreen}
+                  options={{
+                    headerTitleStyle: { color: '#1EAED7' },
+                    headerTintColor: '#1EAED7',
+                  }}
+                />
+                <Stack.Screen
+                  name="Register"
+                  component={Register}
+                  options={{
+                    headerTitleStyle: { color: '#1EAED7' },
+                    headerTintColor: '#1EAED7',
+                  }}
+                />
+              </Stack.Navigator>
             )}
-            <Tab.Navigator screenOptions={CustomScreenOptions}>
-              <Tab.Screen
-                name="HomeStack"
-                component={HomeStack}
-                options={{
-                  tabBarIcon: ({ color, size }) => (
-                    <Feather name="home" size={size} color={color} />
-                  ),
-                }}
-              />
-              <Tab.Screen
-                name="FlowChart"
-                component={FlowChart}
-                options={{
-                  tabBarIcon: ({ color, size }) => (
-                    <Entypo name="flow-tree" size={size} color={color} />
-                  ),
-                }}
-              />
-              <Tab.Screen
-                name="Settings"
-                component={Register}
-                options={{
-                  tabBarIcon: ({ color, size }) => (
-                    <Feather name="settings" size={size} color={color} />
-                  ),
-                }}
-              />
-              <Tab.Screen
-                name="Resources"
-                component={Resources}
-                options={{
-                  tabBarIcon: ({ color, size }) => (
-                    <Feather name="settings" size={size} color={color} />
-                  ),
-                }}
-              />
-              <Tab.Screen
-                name="Journal"
-                component={JournalStack}
-                options={{
-                  tabBarIcon: ({ color, size }) => (
-                    <Feather name="pen-tool" size={size} color={color} />
-                  ),
-                }}
-              />
-            </Tab.Navigator>
+
             <StatusBar style="auto" backgroundColor="#ffffff" />
           </NavigationContainer>
         </View>
