@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
-
+import { Text, View, Image } from 'react-native';
 import styles from './styles';
 import Logo from '../../components/Logo/Logo';
+
 
 const Home = () => {
   const [quote, setQuote] = useState('');
@@ -27,12 +27,12 @@ const Home = () => {
     <View style={styles.container}>
       <Logo />
       <View style={styles.quoteContainer}>
-        {/* <View style={styles.quoteHeader}>
-          <Text style={styles.quoteHeaderText}>
-            Here is your quote of the day:
-          </Text>
-        </View> */}
+          {/* <Text style={styles.quoteHeaderText}>
+            Quote
+          </Text> */}
+        <Image style= {styles.quote1} source={require('../../assets/icons8-quote-left-50.png')} />
         <Text style={styles.quoteText}>{quote}</Text>
+        <Image style= {styles.quote2} source={require('../../assets/icons8-get-quote-50.png')} />
       </View>
     </View>
   );
