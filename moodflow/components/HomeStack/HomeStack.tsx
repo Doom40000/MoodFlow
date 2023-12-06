@@ -1,10 +1,10 @@
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 
 import CreatePost from '../../screens/CreatePost/CreatePost';
 import Home from '../../screens/Home/Home';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
+import LogoutConfirmation from '../../api/Auth/Logout';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -36,6 +36,7 @@ const HomeDrawerNavigator: React.FC = () => {
   return (
     <Drawer.Navigator>
       <Drawer.Screen name="HomeStack" component={HomeStack} />
+      <Drawer.Screen name="Logout" component={LogoutConfirmation} />
     </Drawer.Navigator>
   );
 };
