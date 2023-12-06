@@ -22,6 +22,7 @@ import FlowChart from './screens/FlowChart/FlowChart';
 import Resources from './screens/Resources/Resources';
 import Settings from './screens/Settings/Settings';
 import { store, persistor } from './store/store';
+import HomeDrawerNavigator from './components/HomeStack/HomeStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -50,8 +51,8 @@ function MainApp() {
   return (
     <Tab.Navigator screenOptions={CustomScreenOptions}>
       <Tab.Screen
-        name="HomeStack"
-        component={HomeStack}
+        name="HomeDrawerNavigator"
+        component={HomeDrawerNavigator}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Feather name="home" size={size} color={color} />

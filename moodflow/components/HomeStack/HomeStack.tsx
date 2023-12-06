@@ -3,6 +3,8 @@ import React from 'react';
 
 import CreatePost from '../../screens/CreatePost/CreatePost';
 import Home from '../../screens/Home/Home';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -28,4 +30,14 @@ const HomeStack: React.FC = () => {
   );
 };
 
-export default HomeStack;
+const Drawer = createDrawerNavigator();
+
+const HomeDrawerNavigator: React.FC = () => {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="HomeStack" component={HomeStack} />
+    </Drawer.Navigator>
+  );
+};
+
+export default HomeDrawerNavigator;
