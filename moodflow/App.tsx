@@ -24,6 +24,8 @@ import Resources from './screens/Resources/Resources';
 // import Settings from './screens/Settings/Settings';
 import SocialFeed from './screens/SocialFeed/SocialFeed';
 import { store, persistor } from './store/store';
+import Settings from './screens/Settings/Settings';
+import LogoutConfirmation from './api/Auth/Logout';
 
 const Tab = createBottomTabNavigator();
 
@@ -71,7 +73,7 @@ function MainApp() {
       />
       <Tab.Screen
         name="Settings"
-        component={Register}
+        component={Settings}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Feather name="settings" size={size} color={color} />
@@ -111,7 +113,6 @@ function MainApp() {
 
 export default function App() {
   const [isLoggedin, setIsLoggedIn] = useState<boolean | null>(null);
-  // const [isLoggedin, setIsLoggedIn] = useState<boolean | null>(null);
 
   useEffect(() => {
     const checkAuthentication = async () => {
@@ -149,6 +150,15 @@ export default function App() {
                 <Stack.Screen
                   name="Register"
                   component={Register}
+                  options={{
+                    headerTitleStyle: { color: '#1EAED7' },
+                    headerTintColor: '#1EAED7',
+                    headerShown: false,
+                  }}
+                />
+                <Stack.Screen
+                  name="LogoutConfirmation"
+                  component={LogoutConfirmation}
                   options={{
                     headerTitleStyle: { color: '#1EAED7' },
                     headerTintColor: '#1EAED7',

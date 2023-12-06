@@ -1,6 +1,6 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LogoutConfirmation = ({ navigation }) => {
   const handleLogout = async () => {
@@ -8,7 +8,7 @@ const LogoutConfirmation = ({ navigation }) => {
       await AsyncStorage.removeItem('jwtToken');
       navigation.replace('LoginScreen');
     } catch (error) {
-      console.error('Error logging out:', error);
+      console.log(error);
     }
   };
 

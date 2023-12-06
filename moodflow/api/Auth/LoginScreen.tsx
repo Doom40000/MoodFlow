@@ -7,7 +7,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from './styles';
 import Logo from '../../components/Logo/Logo';
 
-// Example LoginScreen
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

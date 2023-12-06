@@ -2,9 +2,9 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 
+import LogoutConfirmation from '../../api/Auth/Logout';
 import CreatePost from '../../screens/CreatePost/CreatePost';
 import Home from '../../screens/Home/Home';
-import LogoutConfirmation from '../../api/Auth/Logout';
 
 export type RootStackParamList = {
   Home: undefined;

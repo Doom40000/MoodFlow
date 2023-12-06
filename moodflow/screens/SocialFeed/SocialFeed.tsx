@@ -80,16 +80,16 @@ const SocialFeed = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://192.168.0.82:3001/receivePosts');
+        const response = await fetch('http://192.168.188.42:3001/receivePosts');
 
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          console.log('Error');
         }
 
         const data = await response.json();
         setResponse(data);
       } catch (error) {
-        throw new Error(error);
+        console.log(error);
       }
     };
 
