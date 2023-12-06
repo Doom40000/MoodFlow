@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useEffect, useState } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, Image } from 'react-native';
 
 import styles from './styles';
 import { RootStackParamList } from '../../components/HomeStack/HomeStack';
@@ -19,7 +19,6 @@ const Home: React.FC = () => {
 
   const url = 'https://zenquotes.io/api/today';
 
-  // Doesn't work in webview, only on native device (CORS Policy)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,12 +40,24 @@ const Home: React.FC = () => {
     <View style={styles.container}>
       <Logo />
       <View style={styles.quoteContainer}>
-        <View style={styles.quoteHeader}>
-          <Text style={styles.quoteHeaderText}>
-            Here is your quote of the day:
-          </Text>
-        </View>
+        {/* <Text style={styles.quoteHeaderText}>
+            Quote
+          </Text> */}
+        <Image
+          style={styles.quote1}
+          source={require('../../assets/icons8-quote-left-50.png')}
+        />
         <Text style={styles.quoteText}>{quote}</Text>
+        <Image
+          style={styles.quote2}
+          source={require('../../assets/icons8-get-quote-50.png')}
+        />
+      </View>
+      <View style={styles.iconContainer}>
+        <TouchableOpacity onPress={handleSocialIconPress}>
+          <Ionicons name="people" size={64} color="white" />
+          <Text style={styles.iconText}>Social</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.iconContainer}>
         <TouchableOpacity onPress={handleSocialIconPress}>

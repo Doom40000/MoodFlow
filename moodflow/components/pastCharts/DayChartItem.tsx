@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SafeAreaView, FlatList, Text, View, Pressable } from 'react-native';
 import { store } from '../../store/store';
+import styles from './DayChartStyles';
 
 let questionText = '';
 let answerText = '';
@@ -30,21 +31,38 @@ function getQuestion(question: string, answer: string){
   }
 }
 
+let textColor = styles.textWhite;
+
+const getAnswer = (answer: string | boolean): string => {
+  if(answer === true){
+    answerText = 'Yes';
+    textColor = styles.textGreen
+  }else if (answer === false){
+   answerText = 'No' ;
+   textColor = styles.textRed;
+  }else{
+    answerText = answer;
+    answer === 'ok'? textColor = styles.textRed
+    : answer === 'bad'? textColor = styles.textRed
+    : textColor = styles.textGreen
+
+  }
+  return answerText
+}
 
 const DayChartItem = ({question, answer}: {question: string, answer: string}) => {
-
-getQuestion(question, answer);
+  getQuestion(question, answer);
+  getAnswer(answer)
 
   return(
-    <View>
-       <View>
-        <Text>{questionText}</Text>
+    <SafeAreaView>
+      <View >
+        <View style = {styles.container}>
+          <Text style={styles.question}>{questionText}</Text>
+          <Text style={textColor}> {answerText.toString()}</Text>
+        </View>
       </View>
-      <View>
-        <Text>{answerText}</Text>
-      </View>
-    </View>
-
+    </SafeAreaView>
   )
 }
 

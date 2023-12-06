@@ -3,7 +3,9 @@ import Calendar from "../../components/pastCharts/Calendar";
 
 const CalendarPage = () => {
   return(
-    <Calendar/>
+    <Calendar
+      // style={{backgroundColor: '#000004'}}
+      />
   )
 }
 

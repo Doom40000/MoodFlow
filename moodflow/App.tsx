@@ -46,7 +46,7 @@ const CustomScreenOptions: BottomTabNavigationOptions = {
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
   },
-  tabBarActiveTintColor: '#1EAED7',
+  tabBarActiveTintColor: '#69ABD1',
   tabBarInactiveTintColor: 'grey',
 };
 
@@ -179,6 +179,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1EAED7',
+    backgroundColor: '#69ABD1',
   },
 });
