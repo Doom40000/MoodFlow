@@ -8,9 +8,13 @@ import styles from './styles';
 import Logo from '../../components/Logo/Logo';
 
 // Example LoginScreen
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleRegisterModal = () => {
+    navigation.navigate('Register', { screen: 'Register' });
+  };
 
   const handleLogin = async () => {
     try {
@@ -77,7 +81,7 @@ const LoginScreen = () => {
       <View style={styles.buttonSpacing}>
         <TouchableOpacity
           style={styles.loginButtons}
-          onPress={() => console.log('Pressed')}
+          onPress={handleRegisterModal}
         >
           <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>

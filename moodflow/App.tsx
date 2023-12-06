@@ -122,6 +122,8 @@ export default function App() {
                   name="LoginScreen"
                   component={LoginScreen}
                   options={{
+                    headerShown: false,
+                    title: 'Login',
                     headerTitleStyle: { color: '#1EAED7' },
                     headerTintColor: '#1EAED7',
                   }}
