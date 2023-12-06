@@ -3,51 +3,51 @@ import { Text, View, FlatList } from 'react-native';
 
 import styles from './styles';
 import Logo from '../../components/Logo/Logo';
-import SocialPost from '../../components/SocialPost/SocialPost';
 import SocialComments from '../../components/SocialComments/SocialComments';
+import SocialPost from '../../components/SocialPost/SocialPost';
 
-const mockData = [
-  {
-    postId: 1,
-    userId: 1,
-    username: 'Mike',
-    body: 'This is a test post',
-    likes: [2, 3],
-    comments: [],
-  },
-  {
-    postId: 2,
-    userId: 2,
-    username: 'John',
-    body: 'This is another test post',
-    likes: [1, 3],
-    comments: [],
-  },
-  {
-    postId: 3,
-    userId: 3,
-    username: 'Amie',
-    body: 'This is the third test post',
-    likes: [2],
-    comments: [],
-  },
-  {
-    postId: 4,
-    userId: 3,
-    username: 'Anonymous',
-    body: 'This post is from an anonymous user, with comments added',
-    likes: [1],
-    comments: [
-      {
-        commentId: 1,
-        userId: 2,
-        username: 'John',
-        body: 'This is a comment on this post',
-        likes: 5,
-      },
-    ],
-  },
-];
+// const mockData = [
+//   {
+//     postId: 1,
+//     userId: 1,
+//     username: 'Mike',
+//     body: 'This is a test post',
+//     likes: [2, 3],
+//     comments: [],
+//   },
+//   {
+//     postId: 2,
+//     userId: 2,
+//     username: 'John',
+//     body: 'This is another test post',
+//     likes: [1, 3],
+//     comments: [],
+//   },
+//   {
+//     postId: 3,
+//     userId: 3,
+//     username: 'Amie',
+//     body: 'This is the third test post',
+//     likes: [2],
+//     comments: [],
+//   },
+//   {
+//     postId: 4,
+//     userId: 3,
+//     username: 'Anonymous',
+//     body: 'This post is from an anonymous user, with comments added',
+//     likes: [1],
+//     comments: [
+//       {
+//         commentId: 1,
+//         userId: 2,
+//         username: 'John',
+//         body: 'This is a comment on this post',
+//         likes: 5,
+//       },
+//     ],
+//   },
+// ];
 
 interface Comments {
   commentId: number;
@@ -67,8 +67,8 @@ interface Post {
 }
 
 interface FetchResponse {
-  message: string,
-  user: string
+  message: string;
+  user: string;
 }
 
 const SocialFeed = () => {
@@ -85,7 +85,7 @@ const SocialFeed = () => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        
+
         const data = await response.json();
         setResponse(data);
       } catch (error) {
@@ -103,7 +103,7 @@ const SocialFeed = () => {
         body: res.message,
         likes: [1, 3, 2],
         comments: [],
-      }
+      };
       return messageObj;
     });
     console.log(fetchedMessages);

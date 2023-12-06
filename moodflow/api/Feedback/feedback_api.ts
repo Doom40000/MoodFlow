@@ -1,6 +1,3 @@
-// Call that stores all questions and their respective answers as nodes in db
-import axios from 'axios';
-
 //! If an error message comes up about Unhandled Promise rejection, check one of the first few lines of the error and change the IP (not port) to the one displayed
 const neo4jEndpoint = 'http://192.168.188.42:3001/postReq';
 const neo4jReceivepoint = 'http://192.168.188.42:3001/getReq/';
@@ -20,7 +17,6 @@ export async function createNodes(questions: questionsInt[]) {
       relationshipType: relationship,
       date,
     }));
-    // console.log('NODES: ' ,nodes);
     const response = await fetch(neo4jEndpoint, {
       method: 'POST',
       headers: {

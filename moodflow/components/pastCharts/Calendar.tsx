@@ -47,14 +47,14 @@
 
 import { Moment } from 'moment';
 import React from 'react';
-import { View, ViewStyle } from 'react-native';
+import { View } from 'react-native';
 import CalendarPicker, {
   DateChangedCallback,
 } from 'react-native-calendar-picker';
 
+import styles from './CalendarStyles';
 import DayChart from './DayChart';
 import { receiveNodes } from '../../api/Feedback/feedback_api';
-import styles from './CalendarStyles';
 
 function formatDate(inputDate: Moment): string {
   const dateObject: Date = inputDate.toDate();
