@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 20,
     paddingHorizontal: 10,
-    backgroundColor: '#1EAED7',
+    backgroundColor: '#69ABD1',
   }
 });
 

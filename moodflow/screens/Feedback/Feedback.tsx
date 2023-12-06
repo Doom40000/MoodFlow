@@ -74,10 +74,6 @@ const Feedback = () => {
   } else {
     feedBackText = `${answers.answer1} ${answers.answer2} ${answers.answer3} ${answers.answer4} ${answers.answer5} `;
   }
-  // If answers are all postive, provide congratulations about positive habits.
-  // If any answers are negative, provide prompts to alter behaviours.
-
-  // For day question, we can have a string that says: if good: 'It seems that you're having a good day, that's great!'
 
   // -> Call to backend START
   const dateToday = new Date();
@@ -112,8 +108,19 @@ const Feedback = () => {
       date: dateToday,
       relationship: 'HAS_ANSWERED',
     },
+    {
+      question: 'question6',
+      answer: state.question6.answer as string | boolean,
+      date: dateToday,
+      relationship: 'HAS_ANSWERED',
+    },
+    {
+      question: 'question7',
+      answer: state.question7.answer as string | boolean,
+      date: dateToday,
+      relationship: 'HAS_ANSWERED',
+    },
   ];
-
   createNodes(questions);
   // -> Call to backend END
 

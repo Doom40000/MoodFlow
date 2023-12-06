@@ -1,7 +1,6 @@
 import React from "react";
 import Svg, { Image } from 'react-native-svg';
 import { View, Dimensions } from 'react-native';
-
 import Chart from "../../components/chart/chart";
 
 const imageSrc = require('../../assets/MoodFlowLogo.png');
@@ -23,7 +22,7 @@ const CheckPage = () => {
           />
         </Svg>
       </View>
-      <Chart/>
+      <Chart />
     </View>
 
   )

@@ -1,53 +1,5 @@
-// import { Moment } from 'moment';
-// import React from 'react';
-// import { View, ViewStyle } from 'react-native';
-// import CalendarPicker, {DateChangedCallback} from 'react-native-calendar-picker';
-// import DayChart from './DayChart';
-// import { receiveNodes } from '../../api/Feedback/feedback_api';
-// import styles from './CalendarStyles';
-
-// function formatDate(inputDate: Moment): string {
-//     const dateObject: Date = inputDate.toDate();
-//     const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', year: 'numeric' };
-//     const formattedDate: string = dateObject.toLocaleDateString('en-US', options);
-//     const splitDate = formattedDate.replace(/ /g, '').replace(',', '').split('');
-//     const day = splitDate.splice(3, 1);
-//     const date = splitDate.join('');
-//     const finalDate = `${day[0]}${date}`;
-//     return finalDate;
-// }
-
-// interface question{
-//   question: "question1",
-//   answer: "good"
-// }
-
-// const Calendar = () => {
-
-//   const onDateChange: DateChangedCallback  = (date) => {
-//     const dateString = formatDate(date)
-//     const charts = receiveNodes(dateString);
-
-//     return <DayChart charts={charts}/>
-//   }
-
-//   return (
-//     <View style={styles.container}>
-//       <CalendarPicker
-//         selectedDayColor= 'white'
-//         todayBackgroundColor= 'pink'
-//         onDateChange={onDateChange}
-
-//       />
-//     </View>
-//   );
-// }
-
-// export default Calendar;
-
-
 import { Moment } from 'moment';
-import React from 'react';
+import React, { useState } from 'react';
 import { View, ViewStyle } from 'react-native';
 import CalendarPicker, {
   DateChangedCallback,
@@ -65,40 +17,23 @@ function formatDate(inputDate: Moment): string {
   };
   const formattedDate: string = dateObject.toLocaleDateString('en-US', options);
   const splitDate = formattedDate.replace(/ /g, '').replace(',', '').split('');
-  const day = splitDate.splice(3, 1);
+  let day = '';
+  splitDate.length === 8? day = splitDate.splice(3, 1).join('')
+  : day = splitDate.splice(3, 2).join('');
   const date = splitDate.join('');
-  const finalDate = `${day[0]}${date}`;
+  const finalDate = `${day}${date}`;
   return finalDate;
 }
 
-interface question {
-  question: 'question1';
-  answer: 'good';
-}
-
 const Calendar = () => {
+  const [selectedDate, setSelectedDate] = useState<Moment | null>(null);
+  const [charts, setCharts] = useState<any[]>([]); // Adjust the type based on your data structure
+
   const onDateChange: DateChangedCallback = async (date) => {
-    // TODO type any to fix here (and add date parameter when controller fixed)
-    // Heyhey :) finalDate currently returns some weird values sometimes
-
-    // const dateString = formatDate(date);
-
-    console.log(formatDate(date));
-
-    const dateString = '4Dec2023';
-
-    const fetchChart = async () => {
-      const data = await fetch(
-        `http://localhost:3001/getReq/${dateString}`,
-      );
-      const parsedData = await data.json();
-      console.log('parsed Data: ', parsedData);
-      console.log('DATA: ', data)
-      return parsedData;
-    };
-    const charts = await fetchChart();
-
-    return <DayChart charts={charts} />;
+    const dateString = formatDate(date);
+    const newCharts = await receiveNodes(dateString);
+    setCharts(newCharts);
+    setSelectedDate(date);
   };
 
   return (
@@ -108,6 +43,7 @@ const Calendar = () => {
         todayBackgroundColor="pink"
         onDateChange={onDateChange}
       />
+      {selectedDate && <DayChart charts={charts} />}
     </View>
   );
 };

@@ -1,5 +1,5 @@
 import { Feather, Entypo } from '@expo/vector-icons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import  BottomTabNavigationOptions, { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
@@ -26,51 +26,55 @@ const CustomScreenOptions = {
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
   },
-  tabBarActiveTintColor: '#1EAED7',
+  tabBarActiveTintColor: '#69ABD1',
   tabBarInactiveTintColor: 'grey',
 };
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <NavigationContainer>
-        <Tab.Navigator screenOptions={CustomScreenOptions}>
-          <Tab.Screen
-            name="Home"
-            component={Home}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Feather name="home" size={size} color={color} />
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="FlowChart"
-            component={FlowChart}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Entypo name="flow-tree" size={size} color={color} />
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="Settings"
-            component={Settings}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Feather name="settings" size={size} color={color} />
-              ),
-            }}
-          />
-        </Tab.Navigator>
-        <StatusBar style="auto" backgroundColor="#ffffff" />
-      </NavigationContainer>
-    </View>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <View style={styles.container}>
+          <NavigationContainer>
+            <Tab.Navigator screenOptions={CustomScreenOptions}>
+              <Tab.Screen
+                name="Home"
+                component={Home}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Feather name="home" size={size} color={color} />
+                  ),
+                }}
+              />
+              <Tab.Screen
+                name="FlowChart"
+                component={FlowChart}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Entypo name="flow-tree" size={size} color={color} />
+                  ),
+                }}
+              />
+              <Tab.Screen
+                name="Settings"
+                component={CalendarPage}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Feather name="settings" size={size} color={color} />
+                  ),
+                }}
+              />
+            </Tab.Navigator>
+            <StatusBar style="auto" backgroundColor="#ffffff" />
+          </NavigationContainer>
+        </View>
+      </PersistGate>
+    </Provider>
   );
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1EAED7',
+    backgroundColor: '#69ABD1',
   },
 });

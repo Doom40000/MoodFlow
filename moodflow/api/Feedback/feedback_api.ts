@@ -1,8 +1,8 @@
 // Call that stores all questions and their respective answers as nodes in db
 import axios from 'axios';
 
-const neo4jEndpoint = 'http://localhost:3001/postReq';
-const neo4jReceivepoint = 'http://localhost:3001/getReq/';
+const neo4jEndpoint = 'http://192.168.1.116:3001/postReq';
+const neo4jReceivepoint = 'http://192.168.1.116:3001/getReq/';
 
 interface questionsInt {
   question: string;
@@ -19,7 +19,6 @@ export async function createNodes(questions: questionsInt[]) {
       relationshipType: relationship,
       date,
     }));
-    // console.log('NODES: ' ,nodes);
     const response = await fetch(neo4jEndpoint, {
       method: 'POST',
       headers: {
@@ -36,9 +35,9 @@ export async function createNodes(questions: questionsInt[]) {
 
 export async function receiveNodes(date: Date | string) {
   try {
-    const response = await axios.get(neo4jReceivepoint + date);
-    console.log(response);
-    return response;
+    const response = await fetch(neo4jReceivepoint + date);
+    const parsedData = await response.json();
+    return parsedData;
   } catch (error) {
     console.log(error);
     throw new Error('Something is bad');

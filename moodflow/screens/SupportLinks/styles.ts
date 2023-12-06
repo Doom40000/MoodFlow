@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 20,
-    backgroundColor: '#1EAED7',
+    backgroundColor: '#69ABD1',
   },
   quoteContainer: {
     flex: 2,
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
   quoteHeaderText: {
     color: 'white',
-    backgroundColor: '#1EAED7',
+    backgroundColor: '#69ABD1',
     fontSize: 22,
   },
   quoteText: {

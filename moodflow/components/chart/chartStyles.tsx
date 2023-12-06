@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     marginTop: 30,
-    backgroundColor: '#1EAED7',
+    backgroundColor: '#69ABD1',
   },
   listItem: {
     flex: 2,
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
   press: {
     marginTop: 20,
-    backgroundColor: '#1EAED7',
+    backgroundColor: '#69ABD1',
     borderColor: '#ffff',
     borderStyle: 'solid',
     borderWidth: 4,

@@ -2,22 +2,24 @@ import React, { useState } from 'react';
 import { FlatList, View } from 'react-native';
 import { store } from '../../store/store';
 import DayChartItem from './DayChartItem';
+import styles from './DayChartStyles';
 
 interface question {
-  question: string,
-  answer: string
+  answerText: string,
+  date: string,
+  questionNumber: string
 }
 
-const DayChart = ({charts}:{charts: any}) => {
+const DayChart = ({charts}:{charts: question[]}) => {
   return(
-    <View >
+    <View style= {styles.listContainer}>
     <FlatList
       data={charts}
-      keyExtractor={(item) => item.question}
+      keyExtractor={(item) => item.questionNumber}
       renderItem={({ item }) => (
         <DayChartItem
-          question={item.question}
-          answer={item.answer}
+          question={item.questionNumber}
+          answer={item.answerText}
         />
       )}
     />

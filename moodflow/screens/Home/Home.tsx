@@ -27,11 +27,11 @@ const Home = () => {
     <View style={styles.container}>
       <Logo />
       <View style={styles.quoteContainer}>
-        <View style={styles.quoteHeader}>
+        {/* <View style={styles.quoteHeader}>
           <Text style={styles.quoteHeaderText}>
             Here is your quote of the day:
           </Text>
-        </View>
+        </View> */}
         <Text style={styles.quoteText}>{quote}</Text>
       </View>
     </View>
