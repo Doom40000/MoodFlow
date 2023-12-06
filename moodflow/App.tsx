@@ -1,28 +1,27 @@
 import { Feather, Entypo } from '@expo/vector-icons';
-
 import 'react-native-gesture-handler';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
+import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import LoginScreen from './api/Auth/LoginScreen';
+import Register from './api/Auth/RegisterScreen';
 import HomeStack from './components/HomeStack/HomeStack';
 import JournalStack from './components/JournalStack/JournalStack';
+import CalendarPage from './screens/Calendar/Calendar';
 import FlowChart from './screens/FlowChart/FlowChart';
 import Resources from './screens/Resources/Resources';
 import Settings from './screens/Settings/Settings';
 import { store, persistor } from './store/store';
-import CalendarPage from './screens/Calendar/Calendar';
-import LoginScreen from './api/Auth/LoginScreen';
-import Register from './api/Auth/RegisterScreen';
 
 const Tab = createBottomTabNavigator();
 
-const CustomScreenOptions = {
+const CustomScreenOptions: BottomTabNavigationOptions = {
   headerShown: false,
   tabBarStyle: {
     width: '75%',
