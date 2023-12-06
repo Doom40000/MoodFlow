@@ -5,6 +5,7 @@ exports[`Home renders correctly 1`] = `
   style={
     {
       "alignItems": "center",
+      "backgroundColor": "#1EAED7",
       "flex": 1,
       "justifyContent": "center",
       "paddingTop": 20,
@@ -14,7 +15,7 @@ exports[`Home renders correctly 1`] = `
   <View
     style={
       {
-        "flex": 1,
+        "flex": 0.6,
       }
     }
   >
@@ -60,7 +61,7 @@ exports[`Home renders correctly 1`] = `
           testID="Logo"
           width="750"
           x="0"
-          y="177.86666666666667"
+          y="111.16666666666667"
         />
       </RNSVGGroup>
     </RNSVGSvgView>
@@ -69,7 +70,7 @@ exports[`Home renders correctly 1`] = `
     style={
       {
         "alignItems": "center",
-        "flex": 2,
+        "flex": 1,
       }
     }
   >
@@ -101,9 +102,65 @@ exports[`Home renders correctly 1`] = `
           "marginHorizontal": 25,
         }
       }
+    />
+  </View>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+        "marginBottom": 15,
+        "width": "75%",
+      }
+    }
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+        }
+      }
     >
-      “It's not about what it is, it's about what it can become.” Dr. Seuss
-    </Text>
+      <Text />
+      <Text
+        style={
+          {
+            "color": "white",
+            "textAlign": "center",
+          }
+        }
+      >
+        Social
+      </Text>
+    </View>
   </View>
 </View>
 `;
