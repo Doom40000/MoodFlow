@@ -1,19 +1,23 @@
 /* eslint-disable react/jsx-boolean-value */
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { StackScreenProps } from '@react-navigation/stack';
 import React, { useState } from 'react';
 import { Text, TextInput, View, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import styles from './styles';
+import { LoginStackParamList } from '../../App';
 import Logo from '../../components/Logo/Logo';
 
+type Props = StackScreenProps<LoginStackParamList, 'LoginScreen'>;
+
 // Example LoginScreen
-const LoginScreen = ({ navigation }) => {
+const LoginScreen: React.FC<Props> = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleRegisterModal = () => {
-    navigation.navigate('Register', { screen: 'Register' });
+    navigation.navigate('Register');
   };
 
   const handleLogin = async () => {

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { Button, View } from 'react-native';
+import { Button, View, TouchableOpacity, Text } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
-const Register = ({ navigation }) => {
+import styles from './styles';
+import Logo from '../../components/Logo/Logo';
+
+const Register = () => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -34,11 +37,26 @@ const Register = ({ navigation }) => {
   };
 
   return (
-    <View>
-      <TextInput placeholder="Email" onChangeText={setEmail} />
-      <TextInput placeholder="Password" onChangeText={setPassword} />
-      <TextInput placeholder="Username" onChangeText={setUsername} />
-      <Button title="Register" onPress={handleRegister} />
+    <View style={styles.container}>
+      <Logo />
+      <TextInput
+        style={styles.inputStyle}
+        placeholder="Email"
+        onChangeText={setEmail}
+      />
+      <TextInput
+        style={styles.inputStyle}
+        placeholder="Password"
+        onChangeText={setPassword}
+      />
+      <TextInput
+        style={styles.inputStyle}
+        placeholder="Username"
+        onChangeText={setUsername}
+      />
+      <TouchableOpacity style={styles.loginButtons} onPress={handleRegister}>
+        <Text style={styles.buttonText}>Register</Text>
+      </TouchableOpacity>
     </View>
   );
 };

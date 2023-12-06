@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     borderRadius: 5,
     minHeight: 75,
-    minWidth: 175,
+    minWidth: 225,
     margin: 15,
     color: 'white',
     textAlign: 'center',
