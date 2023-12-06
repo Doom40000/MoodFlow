@@ -2,14 +2,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useEffect, useState } from 'react';
-
 import { Text, View, TouchableOpacity } from 'react-native';
-
 
 import styles from './styles';
 import { RootStackParamList } from '../../components/HomeStack/HomeStack';
 import Logo from '../../components/Logo/Logo';
-
 
 type createPostProp = StackNavigationProp<RootStackParamList, 'CreatePost'>;
 
@@ -50,7 +47,6 @@ const Home: React.FC = () => {
           </Text>
         </View>
         <Text style={styles.quoteText}>{quote}</Text>
-
       </View>
       <View style={styles.iconContainer}>
         <TouchableOpacity onPress={handleSocialIconPress}>
