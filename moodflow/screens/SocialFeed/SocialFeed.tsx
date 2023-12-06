@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Pressable, Text, View, FlatList } from 'react-native';
+import { Text, View, FlatList } from 'react-native';
 
 import styles from './styles';
 import Logo from '../../components/Logo/Logo';
@@ -13,9 +13,7 @@ const mockData = [
     username: 'Mike',
     body: 'This is a test post',
     likes: [2, 3],
-    comments: [
-      
-    ]
+    comments: [],
   },
   {
     postId: 2,
@@ -23,9 +21,7 @@ const mockData = [
     username: 'John',
     body: 'This is another test post',
     likes: [1, 3],
-    comments: [
-      
-    ]
+    comments: [],
   },
   {
     postId: 3,
@@ -33,9 +29,7 @@ const mockData = [
     username: 'Amie',
     body: 'This is the third test post',
     likes: [2],
-    comments: [
-      
-    ]
+    comments: [],
   },
   {
     postId: 4,
@@ -49,55 +43,101 @@ const mockData = [
         userId: 2,
         username: 'John',
         body: 'This is a comment on this post',
-        likes: 5
-      }
-    ]
+        likes: 5,
+      },
+    ],
   },
-]
+];
 
 interface Comments {
-  commentId: number
-  userId: number
-  username: string
-  body: string
-  likes: number[]
+  commentId: number;
+  userId: number;
+  username: string;
+  body: string;
+  likes: number[];
 }
 
 interface Post {
-  postId: number
-  userId: number
-  username: string
-  body: string
-  likes: number[]
-  comments: Comments[]
+  postId: number;
+  userId: number;
+  username: string;
+  body: string;
+  likes: number[];
+  comments: Comments[];
+}
+
+interface FetchResponse {
+  message: string,
+  user: string
 }
 
 const SocialFeed = () => {
-  const [ posts, setPosts ] = useState<Post[]>([]);
-  const [ selectedPost, setSelectedPost ] = useState<Post | {}>({});
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [selectedPost, setSelectedPost] = useState<Post | {}>({});
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [response, setResponse] = useState<FetchResponse[]>([]);
 
   useEffect(() => {
-    setPosts(mockData);
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://192.168.0.82:3001/receivePosts');
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        
+        const data = await response.json();
+        setResponse(data);
+      } catch (error) {
+        throw new Error(error);
+      }
+    };
+
+    fetchData();
+
+    const fetchedMessages = response.map((res) => {
+      const messageObj: Post = {
+        postId: 5,
+        userId: 4,
+        username: res.user,
+        body: res.message,
+        likes: [1, 3, 2],
+        comments: [],
+      }
+      return messageObj;
+    });
+    console.log(fetchedMessages);
+    setPosts(fetchedMessages);
   }, []);
 
   return (
     <View style={styles.container}>
       <Logo />
-      <View style = {{flex: 2, width: '100%'}}>
+      <View style={{ flex: 2, width: '100%' }}>
         {posts.length ? (
           <FlatList
             data={posts}
-            renderItem={({ item }) => <SocialPost modalVisible={modalVisible} setModalVisible={setModalVisible} setSelectedPost={setSelectedPost} postItem={item} />}
+            renderItem={({ item }) => (
+              <SocialPost
+                modalVisible={modalVisible}
+                setModalVisible={setModalVisible}
+                selectedPost={selectedPost}
+                setSelectedPost={setSelectedPost}
+                postItem={item}
+              />
+            )}
           />
         ) : (
           <Text>No posts available</Text>
-        )
-        }
+        )}
       </View>
-      <SocialComments selectedPost={selectedPost} modalVisible={modalVisible} setModalVisible={setModalVisible} />
+      <SocialComments
+        selectedPost={selectedPost}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
     </View>
-  )
+  );
 };
 
 export default SocialFeed;

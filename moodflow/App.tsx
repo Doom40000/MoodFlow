@@ -8,21 +8,22 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { err } from 'react-native-svg/lib/typescript/xml';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import LoginScreen from './api/Auth/LoginScreen';
 import Register from './api/Auth/RegisterScreen';
-import HomeStack from './components/HomeStack/HomeStack';
+import HomeDrawerNavigator from './components/HomeStack/HomeStack';
 import JournalStack from './components/JournalStack/JournalStack';
 import Logo from './components/Logo/Logo';
-import CalendarPage from './screens/Calendar/Calendar';
+// TODO: Use Calendar Page
+// import CalendarPage from './screens/Calendar/Calendar';
 import FlowChart from './screens/FlowChart/FlowChart';
 import Resources from './screens/Resources/Resources';
-import Settings from './screens/Settings/Settings';
+// TODO: Use Settings
+// import Settings from './screens/Settings/Settings';
+import SocialFeed from './screens/SocialFeed/SocialFeed';
 import { store, persistor } from './store/store';
-import HomeDrawerNavigator from './components/HomeStack/HomeStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -80,6 +81,15 @@ function MainApp() {
       <Tab.Screen
         name="Resources"
         component={Resources}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="settings" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Feed"
+        component={SocialFeed}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Feather name="settings" size={size} color={color} />

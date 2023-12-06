@@ -79,6 +79,24 @@ interface question {
 const Calendar = () => {
   const onDateChange: DateChangedCallback = async (date) => {
     // TODO type any to fix here (and add date parameter when controller fixed)
+    // Heyhey :) finalDate currently returns some weird values sometimes
+
+    // const dateString = formatDate(date);
+
+    console.log(formatDate(date));
+
+    // const dateString = '4Dec2023';
+
+    // const fetchChart = async () => {
+    //   const data = await fetch(
+    //     `http://90.202.53.189:3001/getReq/${dateString}`,
+    //   );
+    //   const parsedData = await data.json();
+    //   console.log('parsed Data: ', parsedData);
+    //   console.log('DATA: ', data)
+    //   return parsedData;
+    // };
+    // const charts = await fetchChart();
 
     const dateString = formatDate(date);
     const charts = receiveNodes(dateString);

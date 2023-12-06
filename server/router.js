@@ -9,6 +9,7 @@ const {
 } = require("./controllers/flowchart_controller.js");
 const { postNewMessage } = require("./controllers/postController.js");
 
+const { receivePosts } = require("./controllers/postController.js");
 const router = require("express").Router();
 
 router.get("/getReq/:day", getNodesBasedOnDays);
@@ -21,4 +22,6 @@ router.post("/createPost", authenticateToken, (req, res) => {
   postNewMessage(currentUser.username, message);
   res.status(200).send("Post created");
 });
+router.post("/checkRegisterData", checkRegister);
+router.get("/receivePosts", receivePosts);
 module.exports = router;
