@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#69ABD1',
   },
   quoteContainer: {
-    flex: 1,
+    flex: 2,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: -200,
@@ -34,17 +34,6 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingVertical: 40,
     borderRadius: 20,
-  },
-  iconContainer: {
-    flex: 1,
-    width: '75%',
-    marginBottom: 15,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  iconText: {
-    color: 'white',
-    textAlign: 'center',
   },
   quote1: {
     alignSelf: 'flex-start',

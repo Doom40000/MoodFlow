@@ -1,4 +1,4 @@
-import { Feather, Entypo } from '@expo/vector-icons';
+import { Feather, Entypo, AntDesign, MaterialIcons } from '@expo/vector-icons';
 import 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -12,6 +12,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import LoginScreen from './api/Auth/LoginScreen';
+import LogoutConfirmation from './api/Auth/Logout';
 import Register from './api/Auth/RegisterScreen';
 import HomeDrawerNavigator from './components/HomeStack/HomeStack';
 import JournalStack from './components/JournalStack/JournalStack';
@@ -24,8 +25,7 @@ import Resources from './screens/Resources/Resources';
 // import Settings from './screens/Settings/Settings';
 import SocialFeed from './screens/SocialFeed/SocialFeed';
 import { store, persistor } from './store/store';
-import Settings from './screens/Settings/Settings';
-import LogoutConfirmation from './api/Auth/Logout';
+import Calendar from './components/pastCharts/Calendar';
 
 const Tab = createBottomTabNavigator();
 
@@ -72,11 +72,11 @@ function MainApp() {
         }}
       />
       <Tab.Screen
-        name="Resources"
-        component={Resources}
+        name="Calendar"
+        component={Calendar}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Feather name="settings" size={size} color={color} />
+            <AntDesign name="calendar" size={size} color={color} />
           ),
         }}
       />
@@ -85,7 +85,7 @@ function MainApp() {
         component={SocialFeed}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Feather name="settings" size={size} color={color} />
+            <MaterialIcons name="rss-feed" size={size} color={color} />
           ),
         }}
       />

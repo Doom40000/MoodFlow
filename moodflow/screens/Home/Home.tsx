@@ -53,18 +53,6 @@ const Home: React.FC = () => {
           source={require('../../assets/icons8-get-quote-50.png')}
         />
       </View>
-      <View style={styles.iconContainer}>
-        <TouchableOpacity onPress={handleSocialIconPress}>
-          <Ionicons name="people" size={64} color="white" />
-          <Text style={styles.iconText}>Social</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.iconContainer}>
-        <TouchableOpacity onPress={handleSocialIconPress}>
-          <Ionicons name="people" size={64} color="white" />
-          <Text style={styles.iconText}>Social</Text>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 };

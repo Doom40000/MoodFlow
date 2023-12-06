@@ -21,9 +21,7 @@ const Resources = () => {
             )
           }
         >
-          <Text style={[styles.linkText, styles.underline]}>
-            Eating a balanced diet
-          </Text>
+          <Text style={[styles.underline]}>Eating a balanced diet</Text>
         </Pressable>
         <Pressable
           onPress={() =>
@@ -32,7 +30,7 @@ const Resources = () => {
             )
           }
         >
-          <Text style={[styles.linkText, styles.underline]}>
+          <Text style={[styles.underline]}>
             Understanding and mitigating sleep problems
           </Text>
         </Pressable>

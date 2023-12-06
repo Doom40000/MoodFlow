@@ -1,6 +1,8 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-expressions */
 import { Moment } from 'moment';
 import React, { useState } from 'react';
-import { View, ViewStyle } from 'react-native';
+import { View } from 'react-native';
 import CalendarPicker, {
   DateChangedCallback,
 } from 'react-native-calendar-picker';
@@ -29,7 +31,7 @@ function formatDate(inputDate: Moment): string {
 
 const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState<Moment | null>(null);
-  const [charts, setCharts] = useState<any[]>([]); // Adjust the type based on your data structure
+  const [charts, setCharts] = useState<any[]>([]);
 
   const onDateChange: DateChangedCallback = async (date) => {
     const dateString = formatDate(date);
