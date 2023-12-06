@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FlatList, View } from 'react-native';
-
+import { store } from '../../store/store';
 import DayChartItem from './DayChartItem';
 import styles from './DayChartStyles';
 

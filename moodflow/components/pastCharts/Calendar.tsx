@@ -2,14 +2,13 @@
 /* eslint-disable no-unused-expressions */
 import { Moment } from 'moment';
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, ViewStyle } from 'react-native';
 import CalendarPicker, {
   DateChangedCallback,
 } from 'react-native-calendar-picker';
-
-import styles from './CalendarStyles';
 import DayChart from './DayChart';
 import { receiveNodes } from '../../api/Feedback/feedback_api';
+import styles from './CalendarStyles';
 
 function formatDate(inputDate: Moment): string {
   const dateObject: Date = inputDate.toDate();
@@ -31,7 +30,7 @@ function formatDate(inputDate: Moment): string {
 
 const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState<Moment | null>(null);
-  const [charts, setCharts] = useState<any[]>([]);
+  const [charts, setCharts] = useState<any[]>([]); // Adjust the type based on your data structure
 
   const onDateChange: DateChangedCallback = async (date) => {
     const dateString = formatDate(date);

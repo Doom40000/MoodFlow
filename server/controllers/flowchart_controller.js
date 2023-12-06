@@ -1,5 +1,5 @@
 const { session } = require("../models/db"); // Import the session setup
-const { format, parseISO } = require("date-fns");
+const { format, parse } = require("date-fns");
 
 // Store the daily feedback as nodes
 async function logPostReq(req, res) {
@@ -29,16 +29,17 @@ async function logPostReq(req, res) {
   }
 }
 
-async function getNodesBasedOnDays(req, res) {
+const getNodesBasedOnDays = async (req, res) => {
   try {
     const { day } = req.params;
     console.log(day);
-    console.log("Hey");
+    const parsedDate = parse(day, "dMMMyyyy", new Date());
+    const formattedDateString = format(parsedDate, "dMMMyyyy");
 
     const result = await session.run(`
    MATCH (n:Question)
-   WHERE n.date = '4Dec2023'
-   return n LIMIT 10
+   WHERE n.date = '${formattedDateString}'
+   return n
    `);
     const responseArray = [];
     result.records.map((node) => {
@@ -49,7 +50,7 @@ async function getNodesBasedOnDays(req, res) {
   } catch (error) {
     console.log(error);
   }
-}
+};
 
 module.exports = {
   logPostReq,

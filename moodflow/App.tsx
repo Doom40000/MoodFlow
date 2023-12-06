@@ -26,6 +26,7 @@ import Resources from './screens/Resources/Resources';
 import SocialFeed from './screens/SocialFeed/SocialFeed';
 import { store, persistor } from './store/store';
 import Calendar from './components/pastCharts/Calendar';
+import CalendarPage from './screens/Calendar/Calendar';
 
 const Tab = createBottomTabNavigator();
 
@@ -73,7 +74,7 @@ function MainApp() {
       />
       <Tab.Screen
         name="Calendar"
-        component={Calendar}
+        component={CalendarPage}
         options={{
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="calendar" size={size} color={color} />

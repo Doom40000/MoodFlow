@@ -34,8 +34,8 @@ export async function createNodes(questions: questionsInt[]) {
 export async function receiveNodes(date: Date | string) {
   try {
     const response = await fetch(neo4jReceivepoint + date);
-    const parsedResponse = response.json();
-    return parsedResponse;
+    const parsedData = await response.json();
+    return parsedData;
   } catch (error) {
     console.log(error);
     throw new Error('Something is bad');
