@@ -28,6 +28,7 @@ const Tab = createBottomTabNavigator();
 export type LoginStackParamList = {
   LoginScreen: undefined;
   Register: undefined;
+  MainApp: undefined;
 };
 
 const Stack = createStackNavigator<LoginStackParamList>();
@@ -44,6 +45,58 @@ const CustomScreenOptions: BottomTabNavigationOptions = {
   tabBarActiveTintColor: '#1EAED7',
   tabBarInactiveTintColor: 'grey',
 };
+
+function MainApp() {
+  return (
+    <Tab.Navigator screenOptions={CustomScreenOptions}>
+      <Tab.Screen
+        name="HomeStack"
+        component={HomeStack}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="home" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="FlowChart"
+        component={FlowChart}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Entypo name="flow-tree" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={Register}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="settings" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Resources"
+        component={Resources}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="settings" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Journal"
+        component={JournalStack}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="pen-tool" size={size} color={color} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
 
 export default function App() {
   const [isLoggedin, setIsLoggedIn] = useState<boolean | null>(null);
@@ -69,53 +122,7 @@ export default function App() {
             {isLoggedin === null ? (
               <Logo />
             ) : isLoggedin ? (
-              <Tab.Navigator screenOptions={CustomScreenOptions}>
-                <Tab.Screen
-                  name="HomeStack"
-                  component={HomeStack}
-                  options={{
-                    tabBarIcon: ({ color, size }) => (
-                      <Feather name="home" size={size} color={color} />
-                    ),
-                  }}
-                />
-                <Tab.Screen
-                  name="FlowChart"
-                  component={FlowChart}
-                  options={{
-                    tabBarIcon: ({ color, size }) => (
-                      <Entypo name="flow-tree" size={size} color={color} />
-                    ),
-                  }}
-                />
-                <Tab.Screen
-                  name="Settings"
-                  component={Register}
-                  options={{
-                    tabBarIcon: ({ color, size }) => (
-                      <Feather name="settings" size={size} color={color} />
-                    ),
-                  }}
-                />
-                <Tab.Screen
-                  name="Resources"
-                  component={Resources}
-                  options={{
-                    tabBarIcon: ({ color, size }) => (
-                      <Feather name="settings" size={size} color={color} />
-                    ),
-                  }}
-                />
-                <Tab.Screen
-                  name="Journal"
-                  component={JournalStack}
-                  options={{
-                    tabBarIcon: ({ color, size }) => (
-                      <Feather name="pen-tool" size={size} color={color} />
-                    ),
-                  }}
-                />
-              </Tab.Navigator>
+              <MainApp />
             ) : (
               <Stack.Navigator initialRouteName="LoginScreen">
                 <Stack.Screen
@@ -134,6 +141,16 @@ export default function App() {
                   options={{
                     headerTitleStyle: { color: '#1EAED7' },
                     headerTintColor: '#1EAED7',
+                  }}
+                />
+                <Stack.Screen
+                  name="MainApp"
+                  component={MainApp}
+                  options={{
+                    headerTitleStyle: { color: '#1EAED7' },
+                    headerTintColor: '#1EAED7',
+                    headerShown: false,
+                    title: 'MainApp',
                   }}
                 />
               </Stack.Navigator>

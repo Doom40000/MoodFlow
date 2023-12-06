@@ -36,7 +36,7 @@ const LoginScreen = ({ navigation }) => {
       const responseData = await response.json();
       if (responseData && responseData.token) {
         await AsyncStorage.setItem('jwtToken', responseData.token);
-        // navigation.navigate('LogoutScreen');
+        navigation.navigate('MainApp');
         alert(responseData.token);
       } else {
         throw new Error('Token not received');
