@@ -72,15 +72,6 @@ function MainApp() {
         }}
       />
       <Tab.Screen
-        name="Settings"
-        component={Settings}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Feather name="settings" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
         name="Resources"
         component={Resources}
         options={{
