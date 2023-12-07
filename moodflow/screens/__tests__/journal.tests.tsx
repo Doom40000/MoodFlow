@@ -8,9 +8,11 @@ import MockedNavigator from '../../components/MockNavigationForTests/MockNavigat
 jest.useFakeTimers();
 
 describe(Journal, () => {
+  const tree = renderer.create(<MockedNavigator component={Journal} params={{}} />).toJSON();
   it('renders correctly', () => {
-    const tree = renderer.create(<MockedNavigator component={Journal} params={{}} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
-  
+  it('should display heading', () => {
+    
+  })
 });
