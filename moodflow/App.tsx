@@ -129,16 +129,16 @@ export default function App() {
                   options={{
                     headerShown: false,
                     title: 'Login',
-                    headerTitleStyle: { color: '#1EAED7' },
-                    headerTintColor: '#1EAED7',
+                    headerTitleStyle: { color: '#69ABD1' },
+                    headerTintColor: '#69ABD1',
                   }}
                 />
                 <Stack.Screen
                   name="Register"
                   component={Register}
                   options={{
-                    headerTitleStyle: { color: '#1EAED7' },
-                    headerTintColor: '#1EAED7',
+                    headerTitleStyle: { color: '#69ABD1' },
+                    headerTintColor: '#69ABD1',
                     headerShown: false,
                   }}
                 />
@@ -146,16 +146,16 @@ export default function App() {
                   name="LogoutConfirmation"
                   component={LogoutConfirmation}
                   options={{
-                    headerTitleStyle: { color: '#1EAED7' },
-                    headerTintColor: '#1EAED7',
+                    headerTitleStyle: { color: '#69ABD1' },
+                    headerTintColor: '#69ABD1',
                   }}
                 />
                 <Stack.Screen
                   name="MainApp"
                   component={MainApp}
                   options={{
-                    headerTitleStyle: { color: '#1EAED7' },
-                    headerTintColor: '#1EAED7',
+                    headerTitleStyle: { color: '#69ABD1' },
+                    headerTintColor: '#69ABD1',
                     headerShown: false,
                     title: 'MainApp',
                   }}

@@ -1,6 +1,7 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "types": ["body-parser"],
     "jsx": "react",
     "strict": true
   },
