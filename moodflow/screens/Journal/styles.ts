@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignContent: 'center',
-    backgroundColor: '#1FADD7',
+    backgroundColor: '#69ABD1',
     width: '100%',
   },
   buttonPrimary: {
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     borderColor: '#FFFFFF',
     padding: 20,
     elevation: 2,
-    backgroundColor: '#1FADD7',
+    backgroundColor: '#69ABD1',
   },
   buttonTextSecondary: {
     alignSelf: 'center',
@@ -53,12 +53,12 @@ const styles = StyleSheet.create({
   buttonTextPrimary: {
     alignSelf: 'center',
     fontSize: 18,
-    color: '#1FADD7'
+    color: '#69ABD1'
   },
   modalContainer: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#3BBCE3',
+    backgroundColor: '#69ABD1',
   },
   smallInput: {
     padding: 10,

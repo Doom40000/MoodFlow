@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 20,
-    backgroundColor: '#1EAED7',
+    backgroundColor: '#69ABD1',
   },
   inputStyle: {
     borderStyle: 'solid',
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     minHeight: 50,
   },
   buttonText: {
-    color: '#1EAED7',
+    color: '#69ABD1',
     fontSize: 24,
   },
 });

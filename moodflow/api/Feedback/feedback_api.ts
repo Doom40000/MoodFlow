@@ -1,6 +1,6 @@
 //! If an error message comes up about Unhandled Promise rejection, check one of the first few lines of the error and change the IP (not port) to the one displayed
-const neo4jEndpoint = 'http://192.168.188.42:3001/postReq';
-const neo4jReceivepoint = 'http://192.168.188.42:3001/getReq/';
+const neo4jEndpoint = 'http://192.168.1.116:3001/postReq';
+const neo4jReceivepoint = 'http://192.168.1.116:3001/getReq/';
 
 interface questionsInt {
   question: string;

@@ -32,7 +32,7 @@ const Register = ({ navigation }) => {
       }
 
       const response = await fetch(
-        'http://192.168.188.42:3001/checkRegisterData',
+        'http://192.168.1.116:3001/checkRegisterData',
         {
           method: 'POST',
           headers: {

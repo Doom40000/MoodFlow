@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     alignContent: 'center',
-    backgroundColor: '#1FADD7',
+    backgroundColor: '#69ABD1',
     width: '100%',
     justifyContent: 'space-between'
   },
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     borderColor: '#FFFFFF',
     padding: 20,
     elevation: 2,
-    backgroundColor: '#1FADD7',
+    backgroundColor: '#69ABD1',
   },
   buttonTextSecondary: {
     alignSelf: 'center',
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   buttonTextPrimary: {
     alignSelf: 'center',
     fontSize: 18,
-    color: '#1FADD7'
+    color: '#69ABD1'
   },
   noteButton: {
     backgroundColor: '#FFFFFF',

@@ -15,7 +15,7 @@ export const retrieveToken = async () => {
 export const postMessage = async (message: string) => {
   try {
     const token = await retrieveToken();
-    const response = await fetch('http://192.168.188.42:3001/createPost', {
+    const response = await fetch('http://192.168.1.116:3001/createPost', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
