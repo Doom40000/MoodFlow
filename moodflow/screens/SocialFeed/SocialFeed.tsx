@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, FlatList, TouchableOpacity } from 'react-native';
+import {
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+  RefreshControl,
+} from 'react-native';
 import { RadioButton } from 'react-native-paper';
 
 import styles from './styles';
@@ -34,6 +40,35 @@ const SocialFeed = ({ navigation }) => {
   const [selectedPost, setSelectedPost] = useState<Post | {}>({});
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [selectedRadio, setSelectedRadio] = useState('Global');
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(async () => {
+    setRefreshing(true);
+    try {
+      const response = await fetch('http://192.168.188.42:3001/receivePosts');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+
+      const fetchedMessages = data.map((res: FetchResponse) => {
+        const messageObj: Post = {
+          postId: 5,
+          userId: 4,
+          username: res.user,
+          body: res.message,
+          likes: [1, 3, 2],
+          comments: [],
+        };
+        return messageObj;
+      });
+      setPosts(fetchedMessages);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setRefreshing(false);
+    }
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -101,6 +136,9 @@ const SocialFeed = ({ navigation }) => {
         {posts.length ? (
           <FlatList
             data={posts}
+            refreshControl={
+              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            }
             renderItem={({ item }) => (
               <SocialPost
                 modalVisible={modalVisible}

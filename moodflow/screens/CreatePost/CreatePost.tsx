@@ -13,13 +13,14 @@ import styles from './styles';
 import { postMessage } from '../../api/Auth/tokenRetrieval';
 import Logo from '../../components/Logo/Logo';
 
-const CreatePost: React.FC = () => {
+const CreatePost: React.FC = ({ navigation }) => {
   const [postText, setPostText] = useState('');
   const [selectedRadio, setSelectedRadio] = useState('Yourself');
 
   const handleSubmitPost = async () => {
     await postMessage(postText);
     setPostText('');
+    navigation.navigate('Feed');
   };
 
   const updatePostText = (
@@ -46,11 +47,11 @@ const CreatePost: React.FC = () => {
         />
         <View style={styles.radioGroup}>
           <TouchableOpacity onPress={handleSubmitPost}>
-            <Text>New Post</Text>
+            <Text>Submit!</Text>
           </TouchableOpacity>
           <Text style={styles.separator}>|</Text>
           <View style={styles.radioButton}>
-            <Text style={styles.radioLabel}>Global</Text>
+            <Text style={styles.radioLabel}>Yourself</Text>
             <RadioButton.Android
               value="Yourself"
               status={selectedRadio === 'Yourself' ? 'checked' : 'unchecked'}
@@ -60,7 +61,7 @@ const CreatePost: React.FC = () => {
           </View>
 
           <View style={styles.radioButton}>
-            <Text style={styles.radioLabel}>Follow</Text>
+            <Text style={styles.radioLabel}>Anonymous</Text>
             <RadioButton.Android
               value="Anonymous'"
               status={selectedRadio === 'Anonymous' ? 'checked' : 'unchecked'}

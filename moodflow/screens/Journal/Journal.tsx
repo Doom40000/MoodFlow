@@ -17,6 +17,10 @@ import {
   getAllJournalsController,
   createJournalEntryController,
 } from '../../native-db/controllers/journal';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import Settings from '../Settings/Settings';
+import Resources from '../Resources/Resources';
+import LogoutConfirmation from '../../api/Auth/Logout';
 
 interface Journal {
   body: string;
@@ -136,4 +140,18 @@ const Journal: React.FC = ({ navigation }) => {
   );
 };
 
-export default Journal;
+const Drawer = createDrawerNavigator();
+
+const JournalDrawerNavigator: React.FC = () => {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="Journal" component={Journal} />
+      <Drawer.Screen name="Profile" component={Settings} />
+      <Drawer.Screen name="Resources" component={Resources} />
+      <Drawer.Screen name="Settings" component={Settings} />
+      <Drawer.Screen name="Logout" component={LogoutConfirmation} />
+    </Drawer.Navigator>
+  );
+};
+
+export default JournalDrawerNavigator;

@@ -160,6 +160,16 @@ export default function App() {
                     title: 'MainApp',
                   }}
                 />
+                <Tab.Screen
+                  name="Journal"
+                  component={JournalStack}
+                  options={{
+                    headerShown: false,
+                    tabBarIcon: ({ color, size }) => (
+                      <Feather name="pen-tool" size={size} color={color} />
+                    ),
+                  }}
+                />
               </Stack.Navigator>
             )}
 
