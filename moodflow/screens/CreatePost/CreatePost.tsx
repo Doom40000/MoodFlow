@@ -7,6 +7,7 @@ import {
   NativeSyntheticEvent,
   TextInputChangeEventData,
 } from 'react-native';
+import { RadioButton } from 'react-native-paper';
 
 import styles from './styles';
 import { postMessage } from '../../api/Auth/tokenRetrieval';
@@ -14,6 +15,7 @@ import Logo from '../../components/Logo/Logo';
 
 const CreatePost: React.FC = () => {
   const [postText, setPostText] = useState('');
+  const [selectedRadio, setSelectedRadio] = useState('Yourself');
 
   const handleSubmitPost = async () => {
     await postMessage(postText);
@@ -42,12 +44,31 @@ const CreatePost: React.FC = () => {
           value={postText}
           onChange={updatePostText}
         />
-        <TouchableOpacity
-          style={styles.submitButton}
-          onPress={handleSubmitPost}
-        >
-          <Text style={styles.submitText}>Submit post</Text>
-        </TouchableOpacity>
+        <View style={styles.radioGroup}>
+          <TouchableOpacity onPress={handleSubmitPost}>
+            <Text>New Post</Text>
+          </TouchableOpacity>
+          <Text style={styles.separator}>|</Text>
+          <View style={styles.radioButton}>
+            <Text style={styles.radioLabel}>Global</Text>
+            <RadioButton.Android
+              value="Yourself"
+              status={selectedRadio === 'Yourself' ? 'checked' : 'unchecked'}
+              onPress={() => setSelectedRadio('Yourself')}
+              color="#007BFF"
+            />
+          </View>
+
+          <View style={styles.radioButton}>
+            <Text style={styles.radioLabel}>Follow</Text>
+            <RadioButton.Android
+              value="Anonymous'"
+              status={selectedRadio === 'Anonymous' ? 'checked' : 'unchecked'}
+              onPress={() => setSelectedRadio('Anonymous')}
+              color="#007BFF"
+            />
+          </View>
+        </View>
       </View>
     </View>
   );

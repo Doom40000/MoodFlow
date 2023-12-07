@@ -6,7 +6,6 @@ import styles from './styles';
 import Logo from '../../components/Logo/Logo';
 import SocialComments from '../../components/SocialComments/SocialComments';
 import SocialPost from '../../components/SocialPost/SocialPost';
-import CreatePost from '../CreatePost/CreatePost';
 
 interface Comments {
   commentId: number;
