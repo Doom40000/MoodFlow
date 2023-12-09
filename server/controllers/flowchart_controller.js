@@ -5,13 +5,11 @@ const { format, parse } = require("date-fns");
 async function logPostReq(req, res) {
   try {
     const postReq = await req.body;
-    console.log("postReq.nodes", postReq.nodes);
     for (const node of postReq.nodes) {
       const { questionNumber } = node;
       const { date } = node;
       const parsedDate = parseISO(date);
       const formattedDate = format(parsedDate, "dMMMyyyy");
-      console.log(formattedDate);
       const answerText = node.answerText;
 
       const result = await session.run(
@@ -32,7 +30,6 @@ async function logPostReq(req, res) {
 const getNodesBasedOnDays = async (req, res) => {
   try {
     const { day } = req.params;
-    console.log(day);
     const parsedDate = parse(day, "dMMMyyyy", new Date());
     const formattedDateString = format(parsedDate, "dMMMyyyy");
 
@@ -43,7 +40,6 @@ const getNodesBasedOnDays = async (req, res) => {
    `);
     const responseArray = [];
     result.records.map((node) => {
-      console.log(node._fields[0].properties);
       responseArray.push(node._fields[0].properties);
     });
     res.json(responseArray);

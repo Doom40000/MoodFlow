@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
   },
   textRed: {
     color: '#503047',
-    // color: '#AF4A35',
     fontSize: 20,
     fontWeight: 'bold',
   },

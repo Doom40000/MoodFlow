@@ -25,7 +25,6 @@ async function receivePosts(req, res) {
    `);
     const responseArray = [];
     result.records.map((node) => {
-      console.log(node._fields[0].properties);
       responseArray.push(node._fields[0].properties);
     });
     res.json(responseArray);

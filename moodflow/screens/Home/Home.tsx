@@ -40,9 +40,6 @@ const Home: React.FC = () => {
     <View style={styles.container}>
       <Logo />
       <View style={styles.quoteContainer}>
-        {/* <Text style={styles.quoteHeaderText}>
-            Quote
-          </Text> */}
         <Image
           style={styles.quote1}
           source={require('../../assets/icons8-quote-left-50.png')}

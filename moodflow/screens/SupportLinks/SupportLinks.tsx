@@ -14,11 +14,9 @@ const SupportLinks = () => {
             Here is your quote of the day:
           </Text>
         </View>
-        {/* <View style={styles.quote}> */}
         <Text style={styles.quoteText}>
           “It's not about what it is, it's about what it can become.” Dr. Seuss
         </Text>
-        {/* </View> */}
       </View>
     </View>
   );

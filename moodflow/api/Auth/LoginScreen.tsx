@@ -71,7 +71,6 @@ const LoginScreen = ({ navigation }) => {
       <View style={styles.buttonSpacing}>
         <TouchableOpacity
           style={styles.loginButtons}
-          onPress={() => console.log('Pressed')}
         >
           <Text style={styles.buttonText}>Forgotten Password</Text>
         </TouchableOpacity>

@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 const checkLoginData = async (req, res) => {
   try {
     const { username, password } = req.body;
-    console.log(req.body);
     const response = await session.run(
       `
       MATCH (u:User { username: $username })
@@ -69,8 +68,6 @@ const checkRegister = async (req, res) => {
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
-  console.log(token);
-  console.log(authHeader);
   if (token == null) {
     return res.sendStatus(401);
   }

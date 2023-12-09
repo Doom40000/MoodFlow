@@ -24,8 +24,6 @@ export async function createNodes(questions: questionsInt[]) {
       },
       body: JSON.stringify({ nodes }),
     });
-
-    console.log('Nodes and relationships created!', JSON.stringify({ nodes }));
   } catch (error) {
     console.error('Error creating nodes and relationships:', error);
   }
